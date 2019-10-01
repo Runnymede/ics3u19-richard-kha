@@ -3,6 +3,7 @@ package kha.unit1;
  * AboutMe.java
  * This program tells you information related to its author, and includes a 
  * phrase which encourages his school team
+ * September 19 2019
  * @author Richard Kha
  */
 public class AboutMe {
