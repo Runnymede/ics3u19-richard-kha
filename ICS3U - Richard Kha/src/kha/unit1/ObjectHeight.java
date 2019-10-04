@@ -16,6 +16,7 @@ public class ObjectHeight {
 
 		Scanner sc = new Scanner(System.in);
 		double time = 0;
+		//this variable 'i' is just used for the loop and whether it ends 
 		int i=0;
 		System.out.println("Enter a value for time less than 4.5 seconds");
 		
