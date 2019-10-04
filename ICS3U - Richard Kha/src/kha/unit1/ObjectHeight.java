@@ -20,11 +20,11 @@ public class ObjectHeight {
 		boolean inputValid = false;
 		
 		
-		//this loop prevents bad input from the user, as in input which is not under 4.5 or symbols
+		//this loop ends when the user enters valid input
 		while (inputValid == false) {
 			inputValid = true;
 			System.out.println("Enter a value for time less than 4.5 seconds");
-			
+			//this try catch catches bad input such as symbols and numbers which are not under 4.5
 			try {
 				time = Double.parseDouble(sc.nextLine());
 				if (time>=4.5) {
