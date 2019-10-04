@@ -16,25 +16,25 @@ public class ObjectHeight {
 
 		Scanner sc = new Scanner(System.in);
 		double time = 0;
-		//this variable 'i' is just used for the loop and whether it ends 
-		int i=0;
+		//this variable is used to indicate when the loop ends 
+		boolean inputValid = false;
 		System.out.println("Enter a value for time less than 4.5 seconds");
 		
 		
 		//this loop prevents bad input from the user, as in input not under 4.5 or strings
-		while (i ==0) {
-			i=1;
+		while (inputValid == false) {
+			inputValid = true;
 			try {
 				time = Double.parseDouble(sc.nextLine());
 				if (time>=4.5) {
-					i=0;
+					inputValid = false;
 					System.out.println("Input is not under 4.5, try again");
 				}
 			}
 
 			catch (Exception e) {
 				System.out.println("Incorrect input, please try again");
-				i=0;
+				inputValid = false;
 			}
 
 		}
