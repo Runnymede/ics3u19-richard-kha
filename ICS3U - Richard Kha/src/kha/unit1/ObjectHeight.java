@@ -21,7 +21,7 @@ public class ObjectHeight {
 		System.out.println("Enter a value for time less than 4.5 seconds");
 		
 		
-		//this loop prevents bad input from the user, as in input not under 4.5 or strings
+		//this loop prevents bad input from the user, as in input which is not under 4.5 or strings
 		while (inputValid == false) {
 			inputValid = true;
 			try {
@@ -38,6 +38,7 @@ public class ObjectHeight {
 			}
 
 		}
+		//calculating the height of the object with formula
 		double objectHeight = 100-2.9*Math.pow(time, 2);
 
 		System.out.println("The height of the object is: "+ objectHeight);
