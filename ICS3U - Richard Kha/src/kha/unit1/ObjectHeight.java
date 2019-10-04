@@ -18,12 +18,13 @@ public class ObjectHeight {
 		double time = 0;
 		//this variable is used to indicate when the loop ends 
 		boolean inputValid = false;
-		System.out.println("Enter a value for time less than 4.5 seconds");
 		
 		
 		//this loop prevents bad input from the user, as in input which is not under 4.5 or symbols
 		while (inputValid == false) {
 			inputValid = true;
+			System.out.println("Enter a value for time less than 4.5 seconds");
+			
 			try {
 				time = Double.parseDouble(sc.nextLine());
 				if (time>=4.5) {
