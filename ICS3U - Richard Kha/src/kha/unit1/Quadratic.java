@@ -43,7 +43,7 @@ public class Quadratic {
 		digits -= hundreds*100;
 		int tens = digits/10;
 		digits -= tens*10;
-		//due to calculations, digits is the value for ones
+		//due to calculations, digits becomes the value for ones at the end
 		
 		System.out.println("Hundreds: "+ hundreds );
 		System.out.println("Tens: "+ tens );
