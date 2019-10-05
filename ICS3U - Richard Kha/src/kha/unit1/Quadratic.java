@@ -31,7 +31,7 @@ public class Quadratic {
 	//This method prevents bad input from the user
 	static double input(String letterExamined) {
 		Scanner sc = new Scanner(System.in);
-		double inputDouble = 0;
+		double inputInDouble = 0;
 		//this variable is used to indicate when the loop ends
 		boolean inputValid = false;
 		//this loop ends when the user enters valid input
@@ -39,15 +39,14 @@ public class Quadratic {
 			inputValid = true;
 			//this try catch catches bad input such as in symbols and letters
 			try {
-
-				inputDouble = Double.parseDouble(sc.nextLine());
+				System.out.println("Please give me a value for "+ letterExamined);
+				inputInDouble = Double.parseDouble(sc.nextLine());
 			}
 			catch (Exception e) {
 				System.out.println("Incorrect input, please try again");
-				System.out.println("Please give me a value for "+ letterExamined);
 				inputValid = false;
 			}
 		}
-		return inputDouble;
+		return inputInDouble;
 	}
 }
