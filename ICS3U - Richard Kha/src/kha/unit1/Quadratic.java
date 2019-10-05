@@ -13,6 +13,7 @@ public class Quadratic {
 	 * This is the entry point to the program
 	 */
 		System.out.println("Quadratic equation solver");
+	
 		//This section prompts the user for values for the variables a, b and c
 		double aValue = inputParse("a");
 		double bValue = inputParse("b");
@@ -29,11 +30,12 @@ public class Quadratic {
 	static double inputParse(String letterExamined) {
 		Scanner sc = new Scanner(System.in);
 		double inputInDouble = 0;
-		//this variable is used to indicate when the loop ends
 		boolean inputValid = false;
+		
 		//this loop ends when the user enters valid input
 		while (inputValid == false) {
 			inputValid = true;
+			
 			//this try catch catches bad input such as in symbols and letters
 			try {
 				System.out.println("Please give me a value for "+ letterExamined);
