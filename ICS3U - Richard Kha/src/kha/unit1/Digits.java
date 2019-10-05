@@ -2,7 +2,7 @@ package kha.unit1;
 
 import java.util.Scanner;
 /**
- * ObjectHeight.java
+ * Digits.java
  * This program tells the user about the ones, tens, and hundreds of a number ranging from 0 to 999
  * September 30, 2019
  *@author Richard Kha
@@ -14,9 +14,6 @@ public class Digits {
 	 */
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-
-		//prompts the user to input a number and stores it in 'digits'
-	
 		int digits = 0;
 		boolean inputValid = false;
 		
@@ -24,6 +21,7 @@ public class Digits {
 		while (inputValid == false) {
 			inputValid = true;
 			System.out.println("Give a integer from 0 and 999");
+			
 			//this try catch catches bad input such as symbols and numbers which are not between 0 and 999
 			try {
 				digits = Integer.parseInt(sc.nextLine());
@@ -38,12 +36,15 @@ public class Digits {
 			}
 
 		}
+		
 		//performs calculations to find the value of the ones, tens and hundreds of a number
 		int hundreds = digits/100;
 		digits -= hundreds*100;
 		int tens = digits/10;
-		digits -= tens*10;
+		
 		//due to calculations, digits becomes the value for ones at the end
+		digits -= tens*10;
+		
 		
 		System.out.println("Hundreds: "+ hundreds );
 		System.out.println("Tens: "+ tens );
