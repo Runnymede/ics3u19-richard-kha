@@ -12,17 +12,14 @@ public class Quadratic {
 	 * 
 	 * This is the entry point to the program
 	 */
-	public static void main(String[] args) {
-
-		Scanner sc = new Scanner(System.in);
-
+		System.out.println("Quadratic equation solver");
 		//This section prompts the user for values for the variables a, b and c
 		System.out.println("Please give me a value for a");
-		double aValue = sc.nextDouble();
+		double aValue = input("a");
 		System.out.println("Please give me a value for b");
-		double bValue = sc.nextDouble();
+		double bValue = input("b");
 		System.out.println("Please give me a value for c");
-		double cValue = sc.nextDouble();
+		double cValue = input("c");
 
 		//This section performs the quadratic equation with the three variables, finding both of the roots
 		double quadraticAnswer1 = (-bValue+Math.sqrt(Math.pow(bValue, 2)- 4* aValue*cValue))/(2*aValue);
@@ -31,5 +28,26 @@ public class Quadratic {
 		System.out.println("Your roots are: "+ quadraticAnswer1+ ", and "+ quadraticAnswer2 );
 
 	}
+	//This method prevents bad input from the user
+	static double input(String letterExamined) {
+		Scanner sc = new Scanner(System.in);
+		double inputDouble = 0;
+		//this variable is used to indicate when the loop ends
+		boolean inputValid = false;
+		//this loop ends when the user enters valid input
+		while (inputValid == false) {
+			inputValid = true;
+			//this try catch catches bad input such as in symbols and letters
+			try {
 
+				inputDouble = Double.parseDouble(sc.nextLine());
+			}
+			catch (Exception e) {
+				System.out.println("Incorrect input, please try again");
+				System.out.println("Please give me a value for "+ letterExamined);
+				inputValid = false;
+			}
+		}
+		return inputDouble;
+	}
 }
