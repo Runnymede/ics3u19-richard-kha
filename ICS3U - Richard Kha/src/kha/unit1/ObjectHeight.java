@@ -13,17 +13,15 @@ public class ObjectHeight {
 	 * This is the entry point to the program
 	 */
 	public static void main(String[] args) throws Exception{
-
 		Scanner sc = new Scanner(System.in);
 		double time = 0;
-		//this variable is used to indicate when the loop ends 
 		boolean inputValid = false;
-		
 		
 		//this loop ends when the user enters valid input
 		while (inputValid == false) {
 			inputValid = true;
 			System.out.println("Enter a value for time less than 4.5 seconds");
+			
 			//this try catch catches bad input such as symbols and numbers which are not under 4.5
 			try {
 				time = Double.parseDouble(sc.nextLine());
@@ -32,20 +30,15 @@ public class ObjectHeight {
 					System.out.println("Input is not under 4.5, try again");
 				}
 			}
-
 			catch (Exception e) {
 				System.out.println("Incorrect input, please try again");
 				inputValid = false;
 			}
-
 		}
+		
 		//calculating the height of the object with formula
 		double objectHeight = 100-2.9*Math.pow(time, 2);
 
 		System.out.println("The height of the object is: "+ objectHeight);
-
-
 	}
-
-
 }
