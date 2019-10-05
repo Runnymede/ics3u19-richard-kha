@@ -15,11 +15,11 @@ public class Quadratic {
 		System.out.println("Quadratic equation solver");
 		//This section prompts the user for values for the variables a, b and c
 		System.out.println("Please give me a value for a");
-		double aValue = input("a");
+		double aValue = inputParse("a");
 		System.out.println("Please give me a value for b");
-		double bValue = input("b");
+		double bValue = inputParse("b");
 		System.out.println("Please give me a value for c");
-		double cValue = input("c");
+		double cValue = inputParse("c");
 
 		//This section performs the quadratic equation with the three variables, finding both of the roots
 		double quadraticAnswer1 = (-bValue+Math.sqrt(Math.pow(bValue, 2)- 4* aValue*cValue))/(2*aValue);
@@ -29,7 +29,7 @@ public class Quadratic {
 
 	}
 	//This method prevents bad input from the user
-	static double input(String letterExamined) {
+	static double inputParse(String letterExamined) {
 		Scanner sc = new Scanner(System.in);
 		double inputInDouble = 0;
 		//this variable is used to indicate when the loop ends
