@@ -12,6 +12,7 @@ public class Quadratic {
 	 * 
 	 * This is the entry point to the program
 	 */
+	public static void main(String[] args) {
 		System.out.println("Quadratic equation solver");
 	
 		//This section prompts the user for values for the variables a, b and c
