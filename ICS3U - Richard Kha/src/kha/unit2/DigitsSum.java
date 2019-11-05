@@ -32,7 +32,7 @@ public class DigitsSum {
 				if (userInput <0) {
 					inputValid = false;
 					System.out.println("Input is not positive");
-				}
+				} 
 			}
 			catch (Exception e) {
 				System.out.println("Incorrect input, please try again");
