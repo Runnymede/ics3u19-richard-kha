@@ -42,10 +42,12 @@ public class DigitsDisplay {
 		//converts the digits into a string so charAt can be used
 		userInputString = String.valueOf(userInput);
 		
-		//prints out each of the digits, each on a separate line, performs calculations to separate each of the digits
-		while (counter<userInputString.length()) {	
+		//loop prints out each of the digits, each on a separate line, performs calculations to separate each of the digits
+		while (counter<userInputString.length()) {
+		    //calculations to separate digits
 		    divisor = Math.pow(10,(userInputString.length()-counter));
 			digitSeparate = (int) ((userInput%divisor)/(divisor/10));
+			
 			System.out.println(digitSeparate);
 			counter++;
 		}
