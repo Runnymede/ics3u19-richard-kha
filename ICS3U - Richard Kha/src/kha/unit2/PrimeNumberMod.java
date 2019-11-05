@@ -19,12 +19,11 @@ public class PrimeNumberMod {
 		int numberStorage;
 		int counter;
 		boolean prime;
-		//if statement allows for user to put in the numbers in any order (e.g. lowest to highest and highest to lowest)
-		if (number2< number1) {
-			numberStorage = number1;
-			number1 = number2;
-			number2 = numberStorage;
-		}
+		
+		//these lines allow the user to put in the numbers in any order (e.g. lowest to highest and highest to lowest)
+		numberStorage = number1;
+		number1 = Math.min(number1, number2);
+		number2 = Math.max(numberStorage, number2);
 		
 		//while statement tests all the numbers in between the two inputed (inclusive) for if they are prime numbers
 		while (number1<=number2) {
