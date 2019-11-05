@@ -2,7 +2,7 @@ package kha.unit2;
 
 import java.util.Scanner;
 /**
- * <br>DigitsDisplay2.java
+ * <br>DigitsDisplay.java
  * <br>This program tells the user about the positive integer they enter, one digit at a time
  * <br>October 29, 2019
  *@author Richard Kha
