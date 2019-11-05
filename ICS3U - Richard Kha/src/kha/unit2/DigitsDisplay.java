@@ -7,7 +7,7 @@ import java.util.Scanner;
  * <br>October 29, 2019
  *@author Richard Kha
  */
-public class DigitsDisplay2 {
+public class DigitsDisplay {
 	/**
 	 * 
 	 * This is the entry point to the program
