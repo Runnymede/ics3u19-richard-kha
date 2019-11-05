@@ -3,7 +3,7 @@ package kha.unit2;
 
 import java.util.Scanner;
 
-public class PrimeNumberMod2 {
+public class PrimeNumberMod {
 
 	public static void main(String[] args) {
 		//initializes and declares variables
