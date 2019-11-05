@@ -2,12 +2,12 @@ package kha.unit2;
 
 import java.util.Scanner;
 /**
- * <br>DigitsSum2.java
+ * <br>DigitsSum.java
  * <br>This program tells the user the sum of the digits of the positive integer they enter
  * <br>October 29, 2019
  *@author Richard Kha
  */
-public class DigitsSum2 {
+public class DigitsSum {
 	/**
 	 * 
 	 * This is the entry point to the program
