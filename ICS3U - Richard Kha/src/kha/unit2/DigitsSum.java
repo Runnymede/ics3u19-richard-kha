@@ -44,8 +44,10 @@ public class DigitsSum {
 		
 		//loop performs calculations to find the sum of each of the digits
 		while (counter<userInputString.length()) {	
+			//calculations to add the individual digits together
 			divisor = Math.pow(10,(userInputString.length()-counter));
 			sumOfDigits += (int) ((userInput%divisor)/(divisor/10));
+			
 			counter++;
 		}
 		System.out.println("The sum of the digits is: "+ sumOfDigits);
