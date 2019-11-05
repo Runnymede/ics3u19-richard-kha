@@ -33,6 +33,11 @@ public class PrimeNumbers {
 				inputValid = false;
 			}
 		}
+		//numbers less than or equal to 1 are not prime
+		if (number<=1) {
+			System.out.println("The number is not a prime");
+			System.exit(0);
+		}
 		//while loop checks if the number is not a prime, and if so, it exits the program
 		while (counter <= (int)Math.sqrt(Math.abs(number))) {
 			if (number%counter == 0) {
@@ -40,11 +45,6 @@ public class PrimeNumbers {
 				System.exit(0);
 			}
 			counter++;
-		}
-		//if statement deals with the case where the input is Integer.MIN_VALUE
-		if (number == -2147483648) {
-			System.out.println("The number is not a prime");
-			System.exit(0);
 		}
 		//if the while loop finds that the number is a prime, it displays this message
 		System.out.println("The number is a prime");
