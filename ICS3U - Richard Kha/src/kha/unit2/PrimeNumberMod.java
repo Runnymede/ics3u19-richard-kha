@@ -25,21 +25,22 @@ public class PrimeNumberMod {
 		number1 = Math.min(number1, number2);
 		number2 = Math.max(numberStorage, number2);
 		
+		//negative numbers and 0, and 1 cannot be prime, so we do not need to check if they are prime, and thus can skip them
+		if (number1<=1){
+		number1 = 2;
+		}
+		
 		//while statement tests all the numbers in between the two inputed (inclusive) for if they are prime numbers
 		while (number1<=number2) {
 			prime = true;
 			counter = 2;
 			//this while loop specifically tests each individual number
-			while (counter<=(int)Math.sqrt(Math.abs(number1))){
+			while (counter<=(int)Math.sqrt(number1)){
 				if (number1%counter == 0) {
 					prime = false;
 					break;
 				}
 				counter++;
-			}
-			//if statement deals with the case that the user inputs Integer.MIN_VALUE
-			if (number1 == -2147483648) {
-				prime = false;
 			}
 			if (prime == true) {
 				System.out.println(number1);
