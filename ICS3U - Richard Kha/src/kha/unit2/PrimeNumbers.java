@@ -1,9 +1,17 @@
 package kha.unit2;
 
 import java.util.Scanner;
-
+/**
+ * <br>PrimeNumbers.java
+ * <br>This program finds if the integer the user inputed is a prime number
+ * <br>October 22, 2019
+ *@author Richard Kha
+ */
 public class PrimeNumbers {
-
+	/**
+	 * 
+	 * This is the entry point to the program
+	 */
 	public static void main(String[] args) {
 		//initializes and declares objects and variables
 		Scanner sc = new Scanner(System.in);
@@ -33,6 +41,7 @@ public class PrimeNumbers {
 			}
 			counter++;
 		}
+		//if statement deals with the case where the input is Integer.MIN_VALUE
 		if (number == -2147483648) {
 			System.out.println("The number is not a prime");
 			System.exit(0);
