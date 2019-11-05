@@ -1,10 +1,17 @@
 package kha.unit2;
 
-
 import java.util.Scanner;
-
+/**
+ * <br>PrimeNumberMod.java
+ * <br>This program prompts the user for two integers and then displays the prime numbers between those two
+ * <br>November 05, 2019
+ *@author Richard Kha
+ */
 public class PrimeNumberMod {
-
+	/**
+	 * 
+	 * This is the entry point to the program
+	 */
 	public static void main(String[] args) {
 		//initializes and declares variables
 		int number1 = inputParse("1st");
