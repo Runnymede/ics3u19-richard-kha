@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * <br>PrimeNumbers.java
  * <br>This program finds if the integer the user inputed is a prime number
- * <br>October 22, 2019
+ * <br>November 05, 2019
  *@author Richard Kha
  */
 public class PrimeNumbers {
