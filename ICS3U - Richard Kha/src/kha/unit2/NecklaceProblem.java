@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * <br>NecklaceProblem.java
  * <br>This program tells the necklace chain of the two numbers they input
- * <br>October 29, 2019
+ * <br>November 07, 2019
  *@author Richard Kha
  */
 public class NecklaceProblem {
