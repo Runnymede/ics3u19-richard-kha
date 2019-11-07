@@ -54,8 +54,12 @@ public class NecklaceProblem {
 
 			//this try catch catches bad input such as in symbols and letters
 			try {
-				System.out.println("Please give me a integer for your "+numberExamined+ " number");
+				System.out.println("Please give me a integer from 0 to 9 for your "+numberExamined+ " number");
 				integerInput= Integer.parseInt((sc.nextLine()));
+				if (integerInput<0 || integerInput>9) {
+					System.out.println("Incorrect input, please try again");
+					inputValid = false;
+				}
 			}
 			catch (Exception e) {
 				System.out.println("Incorrect input, please try again");
