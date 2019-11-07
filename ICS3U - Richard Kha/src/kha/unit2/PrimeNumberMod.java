@@ -13,14 +13,16 @@ public class PrimeNumberMod {
 	 * This is the entry point to the program
 	 */
 	public static void main(String[] args) {
-		//initializes and declares variables
 		System.out.println("Input two numbers and this program will list all the prime numbers between them (inclusive)");
+		
+		//initializes and declares variables
 		int number1 = inputParse("1st");
 		int number2 = inputParse("2nd");
-		System.out.println("Your prime numbers are:");
 		int numberStorage;
 		int counter;
 		boolean prime;
+		
+		System.out.println("Your prime numbers are:");
 		
 		//these lines allow the user to put in the numbers in any order (e.g. lowest to highest and highest to lowest)
 		numberStorage = number1;
@@ -51,9 +53,9 @@ public class PrimeNumberMod {
 		}
 	}
 	/**
-	   * Gets the users input and refuses bad input.
-	   * @return integer for main calculations.
-	   */
+	 * Gets the users input and refuses bad input.
+	 * @return integer for main calculations.
+	 */
 	static int inputParse(String numberExamined) {
 		Scanner sc = new Scanner(System.in);
 		int integerInput = 0;
