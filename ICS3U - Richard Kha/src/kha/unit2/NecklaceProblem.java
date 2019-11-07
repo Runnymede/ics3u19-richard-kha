@@ -21,13 +21,20 @@ public class NecklaceProblem {
 		int compute1 = input1;
 		int compute2 = input2;
 		int numStorage;
+		
 		System.out.println("Your necklace chain is: ");
-		//prints out first two numbers of the 
+		
+		//prints out the first two numbers of the necklace chain
 		System.out.print(input1 +" "+input2);
+		
+		//loop prints out the entire chain
 		do {
 			numStorage = compute1;
 			compute1 = compute2;
+			
+			//grabs the ones digit of the two numbers added together
 			compute2 = (numStorage + compute2)%10;
+
 			System.out.print(" "+ compute2);
 		}while (compute1!=input1 || compute2!=input2);
 		
