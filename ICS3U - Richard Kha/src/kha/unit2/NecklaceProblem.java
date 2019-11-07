@@ -14,30 +14,31 @@ public class NecklaceProblem {
 	 */
 	public static void main(String[] args) {
 		System.out.println("Necklace chain generator");
-		
+
 		//declares variables and assigns them
 		int input1 = inputParse("first");
 		int input2 = inputParse("second");
 		int compute1 = input1;
 		int compute2 = input2;
 		int numStorage;
-		
-		System.out.println("Your necklace chain is: ");
-		
-		//prints out the first two numbers of the necklace chain
+		int amountOfNumbers = 2;
+		//prints out first two numbers of the necklace chain 
 		System.out.print(input1 +" "+input2);
-		
-		//loop prints out the rest of the necklace chain
+
+		//loop prints out the entire chain
 		do {
+			//calculations needed to create the chain
 			numStorage = compute1;
 			compute1 = compute2;
-			
+
+			amountOfNumbers++;
+
 			//grabs the ones digit of the two numbers added together
 			compute2 = (numStorage + compute2)%10;
 
 			System.out.print(" "+ compute2);
 		}while (compute1!=input1 || compute2!=input2);
-		
+		System.out.println("There are "+amountOfNumbers + " numbers in this chain");
 	}
 	/**
 	 * Gets the users input and refuses bad input.
