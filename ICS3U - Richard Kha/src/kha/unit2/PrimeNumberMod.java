@@ -14,8 +14,10 @@ public class PrimeNumberMod {
 	 */
 	public static void main(String[] args) {
 		//initializes and declares variables
+		System.out.println("Input two numbers and this program will list all the prime numbers between them (inclusive)");
 		int number1 = inputParse("1st");
 		int number2 = inputParse("2nd");
+		System.out.println("Your prime numbers are:");
 		int numberStorage;
 		int counter;
 		boolean prime;
