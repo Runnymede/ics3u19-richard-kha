@@ -38,6 +38,7 @@ public class NecklaceProblem {
 
 			System.out.print(" "+ compute2);
 		}while (compute1!=input1 || compute2!=input2);
+		System.out.println();
 		System.out.println("There are "+amountOfNumbers + " numbers in this chain");
 	}
 	/**
