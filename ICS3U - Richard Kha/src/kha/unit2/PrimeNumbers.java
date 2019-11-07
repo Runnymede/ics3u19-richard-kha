@@ -18,7 +18,7 @@ public class PrimeNumbers {
 		int counter = 2;
 		boolean inputValid = false;
 		int number = 0;
-		
+		System.out.println("Prime number identifier");
 		//this loop ends when the user enters valid input
 		while (inputValid == false) {
 			System.out.print("Enter a integer: ");
