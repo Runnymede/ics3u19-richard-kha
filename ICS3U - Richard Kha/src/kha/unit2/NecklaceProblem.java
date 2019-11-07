@@ -27,7 +27,7 @@ public class NecklaceProblem {
 		//prints out the first two numbers of the necklace chain
 		System.out.print(input1 +" "+input2);
 		
-		//loop prints out the entire chain
+		//loop prints out the rest of the necklace chain
 		do {
 			numStorage = compute1;
 			compute1 = compute2;
