@@ -27,7 +27,10 @@ public class Quadratic {
 		System.out.println("Your roots are: "+ quadraticAnswer1+ ", and "+ quadraticAnswer2 );
 
 	}
-	//This method prevents bad input from the user
+	/**
+	 * Gets the users input and refuses bad input.
+	 * @return double for main calculations.
+	 */
 	static double inputParse(String letterExamined) {
 		Scanner sc = new Scanner(System.in);
 		double inputInDouble = 0;
