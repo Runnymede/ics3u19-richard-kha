@@ -23,7 +23,7 @@ public class PrimeNumbers {
 		while (inputValid == false) {
 			System.out.print("Enter a integer: ");
 			inputValid = true;
-			
+
 			//this try catch catches bad input such as symbols that are not integers
 			try {
 				number = Integer.parseInt(sc.nextLine());
@@ -33,14 +33,15 @@ public class PrimeNumbers {
 				inputValid = false;
 			}
 		}
-		//numbers less than or equal to 1 are not prime
-		if (number<=1) {
-			System.out.println("The number is not a prime");
-			System.exit(0);
-		}
-		//while loop checks if the number is not a prime, and if so, it exits the program
-		while (counter <= (int)Math.sqrt(Math.abs(number))) {
-			if (number%counter == 0) {
+
+		/*while loop checks if the number is not a prime, and if so, it exits the program. 
+		 *Variable counter will check the all the possible factors for the number.
+		 *The other condition to enter the while (number<=1) allows for numbers less than or equal to 1 
+		 *to be tested with the if statement inside.
+		 */
+		while (counter <= (int)Math.sqrt(number) || number<=1) {
+			//if the number has a divisor which isn't itself or 1, it is not a prime. Also, numbers less than 2 are not prime.
+			if (number%counter == 0 ||number<=1) {
 				System.out.println("The number is not a prime");
 				System.exit(0);
 			}
