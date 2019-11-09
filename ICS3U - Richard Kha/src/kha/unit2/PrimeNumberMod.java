@@ -29,7 +29,7 @@ public class PrimeNumberMod {
 		number1 = Math.min(number1, number2);
 		number2 = Math.max(numberStorage, number2);
 		
-		//negative numbers and 0, and 1 cannot be prime, so we do not need to check if they are prime, and thus can skip them
+		//negative numbers, 0, and 1 cannot be prime, so we do not need to test if they are prime, and thus can skip them
 		if (number1<=1){
 		number1 = 2;
 		}
