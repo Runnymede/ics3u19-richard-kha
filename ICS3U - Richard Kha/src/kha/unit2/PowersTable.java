@@ -1,8 +1,14 @@
-package bows;
+package kha.unit2;
 
 import java.util.Scanner;
+/**
+ * <br>PowersTable.java
+ * <br>This program gives the user a power table given the highest or lowest base number and the highest or lowest exponent value
+ * <br>November 12, 2019
+ *@author Richard Kha
+ */
 
-public class PepegaClap {
+public class PowersTable {
 
 
 	public static void main(String[] args) {
