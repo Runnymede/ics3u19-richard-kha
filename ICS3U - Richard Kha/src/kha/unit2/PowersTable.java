@@ -25,7 +25,10 @@ public class PowersTable {
 
 		//this loop counts from 0 to the base number the user inputed
 		for (int a =-1; a<=Math.abs(inputBase); a++) {
-			//putting the value of the counter (a) into baseNumber allows the value of 'a' to be used without changing the value of the counter for the loop
+			/*
+			putting the value of the counter (a) into baseNumber allows the value of 'a' to be used 
+			without changing the value of the counter for the loop
+			*/
 			baseNumber = a;
 			
 			//if statement handles putting x as the label for the first column
@@ -59,15 +62,16 @@ public class PowersTable {
 				else if (a == -1) {
 					//allows the exponent number to count to the exponent number the user inputed
 					exponentNumber=i;
-					//if the exponent is negative, use a trick to make the exponent negative (this is not used for calculations however)
+					//if the exponent is negative, use a trick to make the exponent negative (this is not used for calculations, just for the label x^)
 					if (inputExponent<0) {
 						exponentNumber = 0-exponentNumber;
 					}
 					System.out.printf("%20s","x^"+exponentNumber);
 				}
 				/*
-				if the number is the highest value for long, print N/A since printing anything else is incorrect.
-				also the since the calculation for negative exponents is not calculated yet, inputExponent>0 is a condition
+				if the number is the highest value for long, print N/A since the data about to be printed is incorrect,
+				also inputExponent>0 is a condition for this else if since variable "number" does not change into a decimal number
+				and thus will print N/A even for negative exponents like 9^-99 (the inputExponenet>0 prevents this)
 				*/
 				else if (number == Long.MAX_VALUE &&inputExponent>0) {
 					System.out.printf("%20s","N/A");
