@@ -9,7 +9,10 @@ import java.util.Scanner;
  */
 
 public class PowersTable {
-
+	/**
+	 * 
+	 * This is the entry point to the program
+	 */
 
 	public static void main(String[] args) {
 		System.out.println("Input the highest or lowest exponent value and the highest or lowest base value and a power table will be generated from 1 to that number");
