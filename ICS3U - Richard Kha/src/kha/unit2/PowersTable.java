@@ -17,7 +17,7 @@ public class PowersTable {
 	public static void main(String[] args) {
 		System.out.println("Input the highest or lowest exponent value and the highest or lowest base value and a power table will be generated from 1 to that number");
 		System.out.println("When calculating the positive exponents, any numbers larger than 9223372036854775807 will be marked as N/A");
-		System.out.println("When calculating the negative exponents, any numbers smaller than 0.000000001 will be marked as 0.0");
+		System.out.println("When calculating the negative exponents, any numbers smaller than 0.0000000000000001 will be marked as 0.0");
 
 		//declaring variables
 		int inputExponent = inputParse("Enter the highest exponent value");
