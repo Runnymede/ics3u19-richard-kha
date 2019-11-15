@@ -81,8 +81,8 @@ public class PowersTable {
 				}	
 				//calculations for negative exponents
 				else if (inputExponent<0) {
-					//formula which prints the answer with accuracy up to 10 significant digits
-					System.out.printf("%20s",(Math.round((1.0/number)*1000000000.0))/1000000000.0);
+					//formula which prints the answer with accuracy up to 17 significant digits
+					System.out.printf("%20s",(Math.round((1.0/number)*10000000000000000.0))/10000000000000000.0);
 				}
 				else {
 					//printing positive exponent result
