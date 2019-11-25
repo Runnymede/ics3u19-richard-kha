@@ -27,7 +27,7 @@ public class CountVowels {
 		for (int i = 0; i<input.length(); i++) {
 
 			//if character is a vowel, add to a counter
-			if (input2.charAt(i) =='a' ||input2.charAt(i) =='e' ||input2.charAt(i) =='i' ||input2.charAt(i) =='o' ||input2.charAt(i) =='u' ) {
+			if (input2.charAt(i) =='a' ||input2.charAt(i) =='e' ||input2.charAt(i) =='i' ||input2.charAt(i) =='o' ||input2.charAt(i) =='u' ||input2.charAt(i) =='y') {
 				counter ++;
 			}
 		}
@@ -37,4 +37,3 @@ public class CountVowels {
 	}
 
 }
-

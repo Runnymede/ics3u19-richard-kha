@@ -4,7 +4,7 @@ import java.util.Scanner;
 /**
  * <br>NecklaceProblem.java
  * <br>This program tells the necklace chain of the two numbers they input
- * <br>October 29, 2019
+ * <br>November 07, 2019
  *@author Richard Kha
  */
 public class NecklaceProblem {
@@ -58,7 +58,6 @@ public class NecklaceProblem {
 			try {
 				System.out.println("Please give me a integer from 0 to 9 for your "+numberExamined+ " number");
 				integerInput= Integer.parseInt((sc.nextLine()));
-
 				//prevents input lower than 0 and higher than 9 
 				if (integerInput<0 || integerInput>9) {
 					System.out.println("Incorrect input, please try again");

@@ -30,7 +30,7 @@ public class CarRecall {
 				inputValid = false;
 			}
 		}
-
+		//switch displays a message only if certain numbers are inputed
 		switch(carModel) {
 		case 179: 
 		case 189:
