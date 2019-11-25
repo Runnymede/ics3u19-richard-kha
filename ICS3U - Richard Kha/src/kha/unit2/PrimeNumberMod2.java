@@ -2,38 +2,36 @@ package kha.unit2;
 
 import java.util.Scanner;
 /**
- * <br>PrimeNumberMod.java
- * <br>This program prompts the user for two integers and then displays the prime numbers between those two
- * <br>November 05, 2019
+ * <br>PrimeNumberMod2.java
+ * <br>This program tells the necklace chain of the two numbers they input
+ * <br>October 29, 2019
  *@author Richard Kha
  */
-public class PrimeNumberMod {
+public class PrimeNumberMod2 {
 	/**
 	 * 
 	 * This is the entry point to the program
 	 */
 	public static void main(String[] args) {
-		System.out.println("Input two numbers and this program will list all the prime numbers between them (inclusive)");
-		
 		//initializes and declares variables
+		System.out.println("Input two numbers and this program will list all the prime numbers between them (inclusive)");
 		int number1 = inputParse("1st");
 		int number2 = inputParse("2nd");
+		System.out.println("Your prime numbers are:");
 		int numberStorage;
 		int counter;
 		boolean prime;
-		
-		System.out.println("Your prime numbers are:");
-		
+
 		//these lines allow the user to put in the numbers in any order (e.g. lowest to highest and highest to lowest)
 		numberStorage = number1;
 		number1 = Math.min(number1, number2);
 		number2 = Math.max(numberStorage, number2);
-		
-		//negative numbers, 0, and 1 cannot be prime, so we do not need to test if they are prime, and thus can skip them
+
+		//negative numbers and 0, and 1 cannot be prime, so we do not need to check if they are prime, and thus can skip them
 		if (number1<=1){
-		number1 = 2;
+			number1 = 2;
 		}
-		
+
 		//while statement tests all the numbers in between the two inputed (inclusive) for if they are prime numbers
 		while (number1<=number2) {
 			prime = true;
