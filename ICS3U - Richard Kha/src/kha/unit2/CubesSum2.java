@@ -2,8 +2,8 @@ package kha.unit2;
 
 /**
  * <br>DigitsSum2.java
- * <br>This program tells the user what integers of two, three, and four digits are
- * <br>equal to the sum of the cubes of their digits
+ * <br>This program tells the user if the sum of cubes of the digits of the positive 
+ * integer they enter equal the positive integer they enter
  * <br>October 29, 2019
  *@author Richard Kha
  */
@@ -15,7 +15,7 @@ public class CubesSum2 {
 	public static void main(String[] args) {
 
 		//declaring variables and assigning one of them
-		int number = 10;
+		int number = 0;
 		int counter;
 		int sumOfDigits;
 		double divisor;

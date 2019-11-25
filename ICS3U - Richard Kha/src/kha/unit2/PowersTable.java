@@ -7,17 +7,12 @@ import java.util.Scanner;
  * <br>November 12, 2019
  *@author Richard Kha
  */
-
 public class PowersTable {
-	/**
-	 * 
-	 * This is the entry point to the program
-	 */
 
 	public static void main(String[] args) {
 		System.out.println("Input the highest or lowest exponent value and the highest or lowest base value and a power table will be generated from 1 to that number");
 		System.out.println("When calculating the positive exponents, any numbers larger than 9223372036854775807 will be marked as N/A");
-		System.out.println("When calculating the negative exponents, any numbers smaller than 0.0000000000000001 will be marked as 0.0");
+		System.out.println("When calculating the negative exponents, any numbers smaller than 0.000000001 will be marked as 0.0");
 
 		//declaring variables
 		int inputExponent = inputParse("Enter the highest exponent value");
@@ -28,10 +23,7 @@ public class PowersTable {
 
 		//this loop counts from 0 to the base number the user inputed
 		for (int a =-1; a<=Math.abs(inputBase); a++) {
-			/*
-			putting the value of the counter (a) into baseNumber allows the value of 'a' to be used 
-			without changing the value of the counter for the loop
-			*/
+			//putting the value of the counter (a) into baseNumber allows the value of 'a' to be used without changing the value of the counter for the loop
 			baseNumber = a;
 			
 			//if statement handles putting x as the label for the first column
@@ -53,10 +45,6 @@ public class PowersTable {
 				//putting the value of the Math.pow(a, i) into number allows for calculations
 				number = (long) Math.pow(a, i);
 				
-				//when negative numbers are with an odd exponent, a negative result is produced
-				if (inputBase<0 && i%2 ==1) {
-					number = 0-number;
-				}
 				//when dividing by 0 (as in 0 to the exponent of a negative power) print undefined 
 				if (a == 0 && i!=0 && inputExponent<0) {
 					System.out.printf("%20s","undefined");	
@@ -65,31 +53,31 @@ public class PowersTable {
 				else if (a == -1) {
 					//allows the exponent number to count to the exponent number the user inputed
 					exponentNumber=i;
-					//if the exponent is negative, use a trick to make the exponent negative (this is not used for calculations, just for the label x^)
+					//if the exponent is negative, use a trick to make the exponent negative (this is not used for calculations however)
 					if (inputExponent<0) {
 						exponentNumber = 0-exponentNumber;
 					}
 					System.out.printf("%20s","x^"+exponentNumber);
 				}
 				/*
-				if the number is the highest value for long, print N/A since the data about to be printed is incorrect,
-				also inputExponent>0 is a condition for this else if since variable "number" does not change into a decimal number
-				and thus will print N/A even for negative exponents like 9^-99 (the inputExponenet>0 prevents this)
+				if the number is the highest value for long, print N/A since printing anything else is incorrect.
+				also the since the calculation for negative exponents is not calculated yet, inputExponent>0 is a condition
 				*/
 				else if (number == Long.MAX_VALUE &&inputExponent>0) {
 					System.out.printf("%20s","N/A");
 				}	
 				//calculations for negative exponents
 				else if (inputExponent<0) {
-					//formula which prints the answer with accuracy up to 17 significant digits
-					System.out.printf("%20s",(Math.round((1.0/number)*10000000000000000.0))/10000000000000000.0);
+					//for negative numbers, when an odd exponent is used the result is negative 
+					if (inputBase<0 && i%2 ==1) {
+						number = 0-number;
+					}
+					System.out.printf("%20s",(Math.round((1.0/number)*1000000000.0))/1000000000.0);
 				}
 				else {
-					//printing positive exponent result
 					System.out.printf("%20s",number);
 				}
 			}
-			//separates the data into rows
 			System.out.println();
 		}
 
@@ -122,6 +110,3 @@ public class PowersTable {
 		return integerInput;
 	}
 }
-
-
-

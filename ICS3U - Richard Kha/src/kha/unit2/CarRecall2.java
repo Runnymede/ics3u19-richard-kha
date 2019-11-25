@@ -32,10 +32,7 @@ public class CarRecall2 {
 					inputValid = false;
 				}
 			}
-			/*
-			switch displays a message only if certain numbers are inputed
-			exits the loop when 0 is entered, skipping the rest of the code
-			*/
+			//exits the loop when 0 is entered, skipping the rest of the code
 			switch(carModel) {
 			case 0:
 				break;

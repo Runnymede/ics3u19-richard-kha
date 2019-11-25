@@ -28,9 +28,9 @@ public class Quadratic {
 
 	}
 	/**
-	 * Gets the users input and refuses bad input.
-	 * @return double for main calculations.
-	 */
+	   * Gets the users input and refuses bad input.
+	   * @return a double for the main calculations.
+	   */
 	static double inputParse(String letterExamined) {
 		Scanner sc = new Scanner(System.in);
 		double inputInDouble = 0;

@@ -2,9 +2,9 @@ package kha.unit1;
 
 import java.util.Scanner;
 /**
- * Digits.java
- * This program tells the user about the ones, tens, and hundreds of a number ranging from 0 to 999
- * September 30, 2019
+ * <br>Digits.java
+ * <br>This program tells the user about the ones, tens, and hundreds of a number ranging from 0 to 999
+ * <br>September 30, 2019
  *@author Richard Kha
  */
 public class Digits {
