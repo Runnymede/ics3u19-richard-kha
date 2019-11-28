@@ -26,7 +26,7 @@ public class DiceRolls {
 			dice1 = (int)(Math.random()*6+1);
 			dice2 = (int)(Math.random()*6+1);
 			total = dice1+dice2;
-			
+
 			//counting occurrences of each number from 2 to 12
 			numberOfRolls[total-2] ++;
 		}
