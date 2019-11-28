@@ -1,7 +1,8 @@
 package kha.unit3;
 /**
- * 
- * 
+ * <br>HappyAndKnow.java
+ * <br>This program prints out 10 verses of the children's song and randomizes the actions in each verse
+ * <br>November 28, 2019
  * @author Richard Kha
  *
  */
