@@ -1,7 +1,9 @@
 package kha.unit3;
 /**
- * 
- * 
+ * <br>DiceRolls.java
+ * <br>This program rolls two 6 sides dice 1000 times and records the amount of the times 
+ * <br>the sum of the two dice equals values from 2 to 12 appears
+ * <br>November 28, 2019
  * @author Richard Kha
  *
  */
@@ -17,7 +19,7 @@ public class DiceRolls {
 		int dice2 = 0;
 		int total = 0;
 		
-		//loop to perform opperations 1000 times 
+		//loop to perform operations 1000 times 
 		for (int a = 0; a<1000; a++) {
 			
 			//generating two random numbers and then added them together
@@ -25,7 +27,7 @@ public class DiceRolls {
 			dice2 = (int)(Math.random()*6+1);
 			total = dice1+dice2;
 			
-			//counting occurances of each number from 2 to 12
+			//counting occurrences of each number from 2 to 12
 			numberOfRolls[total-2] ++;
 		}
 		//displaying the results from the operations in a neat table-like fashion

@@ -2,8 +2,9 @@ package kha.unit3;
 
 import java.util.Scanner;
 /**
- * 
- * 
+ * <br>This program plays a guessing game with the user, where it tries to guess 
+ * <br>the vegetable the user is thinking of
+ * <br>November 28, 2019
  * @author Richard Kha
  *
  */
