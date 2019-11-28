@@ -128,7 +128,7 @@ public class TikTacToe {
 	/**
 	 * Gets the user's input and refuses bad input or integers higher than 3 or lower than 1.
 	 * @param locationOfInput - used in string for message prompt
-	 * @param player - used in string for message prompt
+	 * @param player - used in string for message prompt 
 	 * @return a integer used in main method place the player's mark 
 	 */
 	static int inputParse(String locationOfInput,String player) {
