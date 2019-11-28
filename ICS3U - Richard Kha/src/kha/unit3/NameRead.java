@@ -2,9 +2,9 @@ package kha.unit3;
 
 import java.util.Scanner;
 /**
+ * <br>NameRead.java
  * <br>This program takes a number of names from the user, then
  * <br>it prints these names in forward order and then in reverse order
- * <br>
  * <br>November 28, 2019
  * @author Richard Kha
  *

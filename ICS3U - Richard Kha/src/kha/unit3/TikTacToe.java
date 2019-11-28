@@ -2,6 +2,7 @@ package kha.unit3;
 
 import java.util.Scanner;
 /**
+ * <br>TikTacToe.java
  * <br>This program allows for a game of tic tac toe with 2 different users.
  * <br>The program prints out the board and asks for input for the column position 
  * <br>and the row position of their piece placement, and continues to do this
