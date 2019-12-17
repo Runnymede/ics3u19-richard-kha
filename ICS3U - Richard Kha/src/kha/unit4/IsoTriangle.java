@@ -1,4 +1,4 @@
-package kha.Unit4;
+package kha.unit4;
 
 import java.io.BufferedReader;
 import java.io.IOException;
