@@ -12,11 +12,12 @@ import java.io.InputStreamReader;
 public class IsoTriangle {
 /**
  * 
- * This is the entry point to the program
+ * This is the entry point to the program (throws are for BufferedReader)
  * @throws NumberFormatException
  * @throws IOException
  */
 	public static void main(String[] args) throws NumberFormatException, IOException {
+		
 		//declaration of variables
 		BufferedReader sc =  new BufferedReader(new InputStreamReader(System.in));
 		boolean inputValid = false;
@@ -67,9 +68,8 @@ public class IsoTriangle {
 	 * This method prints out a certain amount of spaces on a line
 	 * @param amount (the amount of spaces)
 	 */
-	
-	public static void drawSpaces(int amount1) {
-		for (int i = 0; i<amount1; i++) {
+	public static void drawSpaces(int amount) {
+		for (int i = 0; i<amount; i++) {
 			System.out.print(" ");
 		}
 		
