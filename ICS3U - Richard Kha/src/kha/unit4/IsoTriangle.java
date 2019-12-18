@@ -13,10 +13,9 @@ public class IsoTriangle {
 /**
  * 
  * This is the entry point to the program (throws are for BufferedReader)
- * @throws NumberFormatException
  * @throws IOException
  */
-	public static void main(String[] args) throws NumberFormatException, IOException {
+	public static void main(String[] args) throws IOException {
 		
 		//declaration of variables
 		BufferedReader sc =  new BufferedReader(new InputStreamReader(System.in));
