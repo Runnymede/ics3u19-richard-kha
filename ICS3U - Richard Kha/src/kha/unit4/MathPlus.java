@@ -1,6 +1,5 @@
 package kha.unit4;
 
-import java.io.IOException;
 
 /**
  * <br>MathPlus.java
@@ -22,7 +21,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the minimum value in the array
-	 * @param integer type, one dimensional array 
+	 * @param array - integer type, one dimensional array 
 	 * @return the index of the minimum value in the array
 	 */
 	public static int min(int[] array) {
@@ -38,7 +37,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the minimum value in the array
-	 * @param double type, one dimensional array 
+	 * @param array - double type, one dimensional array 
 	 * @return the index of the minimum value in the array
 	 */
 	public static int min(double[] array) {
@@ -55,7 +54,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the minimum value in the array
-	 * @param byte type, one dimensional array 
+	 * @param array - byte type, one dimensional array 
 	 * @return the index of the minimum value in the array
 	 */
 	public static int min(byte[] array) {
@@ -72,7 +71,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the minimum value in the array
-	 * @param long type, one dimensional array 
+	 * @param array - long type, one dimensional array 
 	 * @return the index of the minimum value in the array
 	 */
 	public static int min(long[] array) {
@@ -89,7 +88,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the minimum value in the array
-	 * @param float type, one dimensional array 
+	 * @param array - float type, one dimensional array 
 	 * @return the index of the minimum value in the array
 	 */
 	public static int min(float[] array) {
@@ -106,7 +105,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the minimum value in the array
-	 * @param short type, one dimensional array 
+	 * @param array - short type, one dimensional array 
 	 * @return the index of the minimum value in the array
 	 */
 	public static int min(short[] array) {
@@ -125,7 +124,7 @@ public class MathPlus {
 	
 	/**
 	 * This method calculates the index of the maximum value in the array
-	 * @param integer type, one dimensional array 
+	 * @param array - integer type, one dimensional array 
 	 * @return the index of the maximum value in the array
 	 */
 	public static int max(int[] array) {
@@ -141,7 +140,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the maximum value in the array
-	 * @param double type, one dimensional array 
+	 * @param array - double type, one dimensional array 
 	 * @return the index of the maximum value in the array
 	 */
 	public static int max(double[] array) {
@@ -157,7 +156,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the maximum value in the array
-	 * @param byte type, one dimensional array 
+	 * @param array - byte type, one dimensional array 
 	 * @return the index of the maximum value in the array
 	 */
 	public static int max(byte[] array) {
@@ -173,7 +172,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the maximum value in the array
-	 * @param long type, one dimensional array 
+	 * @param array - long type, one dimensional array 
 	 * @return the index of the maximum value in the array
 	 */
 	public static int max(long[] array) {
@@ -189,7 +188,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the maximum value in the array
-	 * @param float type, one dimensional array 
+	 * @param array - float type, one dimensional array 
 	 * @return the index of the maximum value in the array
 	 */
 	public static int max(float[] array) {
@@ -205,7 +204,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method calculates the index of the maximum value in the array
-	 * @param short type, one dimensional array 
+	 * @param array - short type, one dimensional array 
 	 * @return the index of the maximum value in the array
 	 */
 	public static int max(short[] array) {
@@ -222,7 +221,7 @@ public class MathPlus {
 	
 	/**
 	 * This method sums up all the values in the array
-	 * @param integer type, one dimensional array 
+	 * @param array - integer type, one dimensional array 
 	 * @return the sum of all the values in the array
 	 */
 	public static int sum(int[] array) {
@@ -236,7 +235,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method sums up all the values in the array
-	 * @param double type, one dimensional array 
+	 * @param array - double type, one dimensional array 
 	 * @return the sum of all the values in the array
 	 */
 	public static double sum(double[] array) {
@@ -250,7 +249,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method sums up all the values in the array
-	 * @param byte type, one dimensional array 
+	 * @param array - byte type, one dimensional array 
 	 * @return the sum of all the values in the array
 	 */
 	public static byte sum(byte[] array) {
@@ -264,7 +263,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method sums up all the values in the array
-	 * @param long type, one dimensional array 
+	 * @param array - long type, one dimensional array 
 	 * @return the sum of all the values in the array
 	 */
 	public static long sum(long[] array) {
@@ -278,7 +277,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method sums up all the values in the array
-	 * @param float type, one dimensional array 
+	 * @param array - float type, one dimensional array 
 	 * @return the sum of all the values in the array
 	 */
 	public static float sum(float[] array) {
@@ -292,7 +291,7 @@ public class MathPlus {
 	}
 	/**
 	 * This method sums up all the values in the array
-	 * @param short type, one dimensional array 
+	 * @param array - short type, one dimensional array 
 	 * @return the sum of all the values in the array
 	 */
 	public static short sum(short[] array) {
@@ -306,7 +305,7 @@ public class MathPlus {
 	}
 	/**
 	 * This calculates the average of all the values in the array
-	 * @param integer type, one dimensional array 
+	 * @param array - integer type, one dimensional array 
 	 * @return the average if all the values in the array
 	 */
 	public static double average(int[] array) {
@@ -322,7 +321,7 @@ public class MathPlus {
 
 	/**
 	 * This calculates the average of all the values in the array
-	 * @param double type, one dimensional array 
+	 * @param array - double type, one dimensional array 
 	 * @return the average if all the values in the array
 	 */
 	public static double average(double[] array) {
@@ -337,7 +336,7 @@ public class MathPlus {
 
 	/**
 	 * This calculates the average of all the values in the array
-	 * @param byte type, one dimensional array 
+	 * @param array - byte type, one dimensional array 
 	 * @return the average if all the values in the array
 	 */
 	public static double average(byte[] array) {
@@ -353,7 +352,7 @@ public class MathPlus {
 
 	/**
 	 * This calculates the average of all the values in the array
-	 * @param long type, one dimensional array 
+	 * @param array - long type, one dimensional array 
 	 * @return the average if all the values in the array
 	 */
 	public static double average(long[] array) {
@@ -369,7 +368,7 @@ public class MathPlus {
 
 	/**
 	 * This calculates the average of all the values in the array
-	 * @param float type, one dimensional array 
+	 * @param array - float type, one dimensional array 
 	 * @return the average if all the values in the array
 	 */
 	public static double average(float[] array) {
@@ -384,7 +383,7 @@ public class MathPlus {
 	
 	/**
 	 * This calculates the average of all the values in the array
-	 * @param short type, one dimensional array 
+	 * @param array - short type, one dimensional array 
 	 * @return the average if all the values in the array
 	 */
 	public static double average(short[] array) {
