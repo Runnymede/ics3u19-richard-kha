@@ -13,11 +13,18 @@ public class MathPlus {
 	 * 
 	 */
 	public static void main(String[] args) {
-		long [] arr = {-32,-1878,3,5,7,2,5,99};
+		double [] arr = {-32,-1878,3,5,4,7,7,7,2,4,99};
+		
 		System.out.println(min(arr));
 		System.out.println(max(arr));
 		System.out.println(sum(arr));
 		System.out.println(average(arr));
+		System.out.println(median(arr));
+		System.out.println(mode(arr));
+		System.out.println(factorial(5));
+		System.out.println(numOfFactors(5));
+		System.out.println(factors(24));
+	
 	}
 	/**
 	 * This method calculates the index of the minimum value in the array
@@ -396,6 +403,93 @@ public class MathPlus {
 		double average = sum(array)*1.0/array.length;
 		return average;
 	}
-
-
+	/**
+	 * This finds the median value of the array
+	 * @param array - double type, one dimensional array
+	 * @return the median value of the array
+	 */
+	public static double median(double[] array) {
+		double median = 0;
+		
+		/*
+		the calculation for the median value changes with whether 
+		the array has an even or odd number of elements
+		*/
+		if (array.length%2 == 1) {
+			median = array[array.length/2];
+		}
+		else {
+			median = (array[array.length/2]+array[array.length/2-1])/2;
+		}
+		return median;
+	}
+	/**
+	 * This finds the mode value of the array
+	 * @param array - double type, one dimensional array
+	 * @return the mode value of the array
+	 */
+	public static double mode(double[] array) {
+		double mode = 0;
+		int counter = 0;
+		
+		/*
+		this loop takes every individual element of the array and finds
+		how many times it occurs
+		*/
+		for (int i = 0; i<array.length; i++) {
+			int tempCounter = 0;
+			double tempMode = array[i];
+			for (int i2 = 0; i2<array.length; i2++) {
+				if (tempMode == array[i2]) {
+					tempCounter++;
+				}
+			}
+			if (tempCounter > counter) {
+			mode = tempMode;
+			counter = tempCounter;
+			}
+		}
+		return mode;
+	}
+	/**
+	 * This finds the factorial value of an integer
+	 * @param array - integer type value
+	 * @return the value of the input's factorial
+	 */
+	public static long factorial(int input) {
+		long factorial = 1;
+		if (input == 0) {
+		}
+		else if(input<0) {
+			factorial = -1;
+		}
+		else {
+			for (int i = 0; i<input; i++) {
+				factorial *= input-i; 
+			}
+		}
+		return factorial;
+	}
+	
+	public static int numOfFactors(int input) {
+		int numOfFactors = 0;
+		for (int i = 1; i<=input; i++) {
+			if (input%i == 0) {
+				numOfFactors++;
+			}
+		}
+		return numOfFactors;
+	}
+	
+	public static int[] factors(int input) {
+		int[] factors = new int [numOfFactors(input)];
+		int index = 0;
+		for (int i = 1; i<=input; i++) {
+			if (input%i == 0) {
+				factors[index] = i;
+				index++;
+			}
+		}
+		return factors;
+	}
 }
