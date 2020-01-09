@@ -25,6 +25,7 @@ public class AdvancedMode {
 			pointer++;
 			}
 			else if (tempCounter == counter) {
+				//todo check for repetition of modes
 				mode[pointer] = tempMode;
 				pointer++;
 			}

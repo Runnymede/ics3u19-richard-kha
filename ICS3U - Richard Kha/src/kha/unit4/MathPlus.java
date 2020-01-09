@@ -1,6 +1,5 @@
 package kha.unit4;
 
-
 /**
  * <br>MathPlus.java
  * <br>This program contains methods which are similar to methods in the Math class
@@ -429,6 +428,7 @@ public class MathPlus {
 	 * @return the mode value of the array
 	 */
 	public static double mode(double[] array) {
+
 		double mode = 0;
 		int counter = 0;
 		
@@ -437,13 +437,16 @@ public class MathPlus {
 		how many times it occurs
 		*/
 		for (int i = 0; i<array.length; i++) {
+			
 			int tempCounter = 0;
 			double tempMode = array[i];
+
 			for (int i2 = 0; i2<array.length; i2++) {
 				if (tempMode == array[i2]) {
 					tempCounter++;
 				}
 			}
+			
 			if (tempCounter > counter) {
 			mode = tempMode;
 			counter = tempCounter;
@@ -453,11 +456,14 @@ public class MathPlus {
 	}
 	/**
 	 * This finds the factorial value of an integer
-	 * @param array - integer type value
+	 * @param input - integer type value
 	 * @return the value of the input's factorial
 	 */
 	public static long factorial(int input) {
+		
 		long factorial = 1;
+		
+		//the factorial of 0 is 1, negative numbers do not have a factorial value so -1 is returned
 		if (input == 0) {
 		}
 		else if(input<0) {
@@ -470,9 +476,15 @@ public class MathPlus {
 		}
 		return factorial;
 	}
-	
+	/**
+	 * This finds the number of positive factors of an integer
+	 * @param input - integer type value
+	 * @return the number of positive factors an integer has 
+	 */
 	public static int numOfFactors(int input) {
 		int numOfFactors = 0;
+		
+		//going through all the possible factors of the number and counting the factors
 		for (int i = 1; i<=input; i++) {
 			if (input%i == 0) {
 				numOfFactors++;
@@ -480,10 +492,17 @@ public class MathPlus {
 		}
 		return numOfFactors;
 	}
-	
+	/**
+	 * This finds all the positive factors of an integer
+	 * @param input - integer type value
+	 * @return an array of all the positive factors of an integer
+	 */
 	public static int[] factors(int input) {
+		//getting the number of factors from another array to initialize the array with the correct size
 		int[] factors = new int [numOfFactors(input)];
 		int index = 0;
+		
+		//finding the factors of the number and placing the factors into the array "factors"
 		for (int i = 1; i<=input; i++) {
 			if (input%i == 0) {
 				factors[index] = i;
