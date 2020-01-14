@@ -80,7 +80,7 @@ public class Tetris extends ConsoleView {
 						tempY = coordinates[0][i]-coordinates [0][0];
 					}
 					else {
-						tempY = coordinates[0][0]-coordinates [0][i];
+						tempY = -(coordinates[0][0]-coordinates [0][i]);
 					}
 					if (coordinates [1][i]>coordinates[1][0]) {
 						tempX = coordinates[1][i]-coordinates [1][0];
