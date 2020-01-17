@@ -45,7 +45,7 @@ public class Tetris extends ConsoleView {
 							move = false;
 							break label4;
 						}
-						if (board[coordinates[0][i]][coordinates[1][i]+1] == 2) {
+						if (board[coordinates[0][i]][coordinates[1][i]+1] != 1 &&board[coordinates[0][i]][coordinates[1][i]+1] != 0) {
 							move = false;
 							break label4;
 						}
@@ -67,7 +67,7 @@ public class Tetris extends ConsoleView {
 							move = false;
 							break label3;
 						}
-						if (board[coordinates[0][i]][coordinates[1][i]-1] == 2) {
+						if (board[coordinates[0][i]][coordinates[1][i]-1] !=1 && board[coordinates[0][i]][coordinates[1][i]-1] !=0) {
 							move = false;
 							break label3;
 						}
@@ -124,7 +124,7 @@ public class Tetris extends ConsoleView {
 				
 			if (place(coordinates) == true) {
 				for (byte i = 0; i<4; i++) {
-					board[coordinates[0][i]][coordinates[1][i]] = 2;
+					board[coordinates[0][i]][coordinates[1][i]] = colour;
 				}
 				
 				for (byte i = 0; i<board.length; i++) {
@@ -164,13 +164,16 @@ public class Tetris extends ConsoleView {
 				for (byte i = 2; i<board.length; i++) {
 					for (byte i2 = 0; i2<board[1].length; i2++ ) {
 						
-						if (board[i][i2] != 0 ) {
-							index = 1;
+						if (board[i][i2] != 0 && board[i][i2] != 1 ) {
+							index = board[i][i2];
+						}
+						else if (board[i][i2] == 1) {
+							index = colour;
 						}
 						else {
-							index = 0;
+							index = 1;
 						}
-							c.drawImage(img[index], i2*20+40, i*20+40);
+							c.drawImage(img[index-1], i2*20+40, i*20+40);
 					}
 					
 				}
@@ -243,7 +246,7 @@ public class Tetris extends ConsoleView {
 	}
 	public static void randomTetromino() {
 		count = (byte)(Math.random()*7);
-		colour = (byte)(Math.random()*4+1);
+		colour = (byte)(Math.random()*4+2);
 		for (byte i = 0; i<4; i++) {
 			coordinates [0][i] = (byte) (tetrominos[count][0][i]+2);
 			coordinates [1][i] = tetrominos[count][1][i];
@@ -272,7 +275,7 @@ public class Tetris extends ConsoleView {
 			if (array[0][i]+1 == board.length) {
 				place = true;
 			}
-			else if (board[array[0][i]+1][array[1][i]] == 2) {
+			else if (board[array[0][i]+1][array[1][i]] >1) {
 				place = true;
 			}
 
