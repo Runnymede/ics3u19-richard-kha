@@ -53,7 +53,6 @@ public class Tetris extends ConsoleView {
 		mediaPlayer[1] = new MediaPlayer(new Media(new File("Recording.mp3").toURI().toString()));
 		int highScore = 0;
 		
-
 		int count = 0;
 		while (!c.isKeyDown("Space")) {
 			if (count%20 <10 ) {
