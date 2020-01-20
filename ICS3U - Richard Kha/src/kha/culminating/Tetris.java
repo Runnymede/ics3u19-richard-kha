@@ -22,6 +22,7 @@ public class Tetris extends ConsoleView {
 	static byte colour = 0;
 	static boolean finishGame = false;
 	static boolean[] fixedRandom = new boolean [35];
+	
 
 	@Override
 	public void run() {
@@ -51,7 +52,7 @@ public class Tetris extends ConsoleView {
 		MediaPlayer [] mediaPlayer = new MediaPlayer [5];
 		mediaPlayer[0] = new MediaPlayer(new Media(new File("Background.mp3").toURI().toString()));
 		mediaPlayer[1] = new MediaPlayer(new Media(new File("Recording.mp3").toURI().toString()));
-		
+		int highScore = 0;
 		
 
 		int count = 0;
@@ -351,17 +352,17 @@ public class Tetris extends ConsoleView {
 						}
 						mediaPlayer[1].stop();
 						totalLinesCleared += linesClearedCounter;
-						score += speedMultiplier*(100)*linesClearedCounter;
+						score += (100)*Math.pow(linesClearedCounter,2)*speedMultiplier;
 						if (totalLinesCleared %10 == 0 && linesClearedCounter!=0) {
-							constantSpeedChange= (byte) Math.round(constantSpeedChange/1.4);
+							constantSpeedChange= (byte) Math.round(constantSpeedChange/1.9);
 							normal = constantSpeedChange;
-							speedMultiplier *=1.8;
+							speedMultiplier = speedMultiplier * 1.8;
 						}
+						
 						currentType = usingTetromino();
 						randomTetromino();
 					}
 					else {
-
 						movement(0,1);
 					}
 					refres = true;
@@ -379,7 +380,6 @@ public class Tetris extends ConsoleView {
 						delay[i]++;
 					}
 				}
-
 				c.sleep(32);
 			}
 			count = 0;
@@ -394,6 +394,9 @@ public class Tetris extends ConsoleView {
 				c.refresh();
 			}
 			c.sleep(1000);
+			if (score>highScore) {
+				highScore = score;
+			}
 			while (true) {
 				if (count%10 <5 ) {
 					c.clear();
@@ -401,7 +404,10 @@ public class Tetris extends ConsoleView {
 					c.setFill(Color.WHITE);
 					c.setFont(STYLESHEET_CASPIAN,30);
 					for (int i = String.valueOf(score).length()-1; i>=0; i--) {
-						c.drawImage(font[Character.getNumericValue(String.valueOf(score).charAt(i))], 42-(String.valueOf(score).length()-1-i)*11+(String.valueOf(score).length())*11, 100);
+						c.drawImage(font[Character.getNumericValue(String.valueOf(score).charAt(i))], 224-(String.valueOf(score).length()-1-i)*11+(String.valueOf(score).length())*11, 104);
+					}
+					for (int i = String.valueOf(highScore).length()-1; i>=0; i--) {
+						c.drawImage(font[Character.getNumericValue(String.valueOf(highScore).charAt(i))], 224-(String.valueOf(highScore).length()-1-i)*11+(String.valueOf(highScore).length())*11, 51);
 					}
 					
 				}
@@ -410,6 +416,7 @@ public class Tetris extends ConsoleView {
 					c.fillText("Press the escape key to exit", 42, 550);
 				}
 				count++;
+				
 				if (c.isKeyDown("Space")) {
 					break;
 				}
@@ -452,10 +459,10 @@ public class Tetris extends ConsoleView {
 			tempX += coordinates[1][0];
 			coordinates2[1][i] = tempX;
 			coordinates2[0][i] = tempY;	
-			if (tempY>=20 || tempY<0 || tempX>=10 || tempX<0) {
+			if (tempY>=board.length || tempY<0 || tempX>=board[0].length || tempX<0) {
 				change = false;
 			}
-			if (change != false && board[tempY][tempX] == 2) {
+			if (change != false && board[tempY][tempX] > 1) {
 				change = false;
 			}
 
