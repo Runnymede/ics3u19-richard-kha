@@ -23,7 +23,6 @@ public class Tetris extends ConsoleView {
 	static boolean finishGame = false;
 	static boolean[] fixedRandom = new boolean [35];
 	
-
 	@Override
 	public void run() {
 		Console c = new Console(500, 600, 36, "Tetris", this);
