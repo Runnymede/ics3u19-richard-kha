@@ -61,14 +61,14 @@ public class Tetris extends ConsoleView {
 		mediaPlayer[5] = new MediaPlayer(new Media(new File("src/kha/culminating/Down.mp3").toURI().toString()));
 		mediaPlayer[6] = new MediaPlayer(new Media(new File("src/kha/culminating/Ending.mp3").toURI().toString()));
 		mediaPlayer[7] = new MediaPlayer(new Media(new File("src/kha/culminating/Introduction.mp3").toURI().toString()));
-		mediaPlayer[0].setVolume(0.3);
+		mediaPlayer[0].setVolume(0.4);
 		mediaPlayer[1].setVolume(0.5);
 		mediaPlayer[2].setVolume(0.3);
 		mediaPlayer[3].setVolume(0.5);
 		mediaPlayer[4].setVolume(0.5);
 		mediaPlayer[5].setVolume(0.3);
-		mediaPlayer[6].setVolume(0.3);
-		mediaPlayer[7].setVolume(0.3);
+		mediaPlayer[6].setVolume(0.4);
+		mediaPlayer[7].setVolume(0.4);
 		
 		int highScore = 0;
 		int count = 0;
@@ -297,6 +297,9 @@ public class Tetris extends ConsoleView {
 					if (speed%4 == 0) {
 					score+=speedMultiplier*1;
 					}
+					if (place(coordinates) == true) {
+						c.sleep(200);
+					}
 				}
 				else {
 					constantSpeedChange = normal;
@@ -359,6 +362,7 @@ public class Tetris extends ConsoleView {
 				if (speed%constantSpeedChange == 0 || down == true) {
 
 					if (place(coordinates) == true) {
+						
 						swappedAlready = false;
 						for (byte i = 0; i<4; i++) {
 							board[coordinates[0][i]][coordinates[1][i]] = colour;
@@ -433,7 +437,7 @@ public class Tetris extends ConsoleView {
 						currentType = usingTetromino();
 						randomTetromino();
 						mediaPlayer[1].stop();
-
+						
 					}
 					else {
 						movement(0,1);
