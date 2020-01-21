@@ -61,15 +61,16 @@ public class Tetris extends ConsoleView {
 		mediaPlayer[5] = new MediaPlayer(new Media(new File("src/kha/culminating/Down.mp3").toURI().toString()));
 		mediaPlayer[6] = new MediaPlayer(new Media(new File("src/kha/culminating/Ending.mp3").toURI().toString()));
 		mediaPlayer[7] = new MediaPlayer(new Media(new File("src/kha/culminating/Introduction.mp3").toURI().toString()));
+		mediaPlayer[8] = new MediaPlayer(new Media(new File("src/kha/culminating/BackgroundSpeed.mp3").toURI().toString()));
 		mediaPlayer[0].setVolume(0.4);
 		mediaPlayer[1].setVolume(0.5);
 		mediaPlayer[2].setVolume(0.3);
 		mediaPlayer[3].setVolume(0.5);
 		mediaPlayer[4].setVolume(0.5);
 		mediaPlayer[5].setVolume(0.3);
-		mediaPlayer[6].setVolume(0.4);
+		mediaPlayer[6].setVolume(0.5);
 		mediaPlayer[7].setVolume(0.4);
-		
+		mediaPlayer[8].setVolume(0.4);
 		int highScore = 0;
 		int count = 0;
 		
@@ -135,13 +136,29 @@ public class Tetris extends ConsoleView {
 			currentType = usingTetromino();
 			randomTetromino();
 			finishGame = false;
-			
-
+			mediaPlayer[0].setCycleCount(Integer.MAX_VALUE);
+			mediaPlayer[8].setCycleCount(Integer.MAX_VALUE);
+			mediaPlayer[0].play();
 			while (finishGame == false) {
+				
+			boolean fastAudio= false;
+				for (byte i = 0; i<10; i++) {
+					for (byte i2 = 0; i2<board[1].length;i2++) {
+						if (board[i][i2] >1) {
+							fastAudio = true;
+							if (mediaPlayer[8].getStatus() != MediaPlayer.Status.PLAYING) {
+							mediaPlayer[0].stop();
+							mediaPlayer[8].play();
+							}
+						}
+						
+					}
+				}
+				if (fastAudio == false) {
+				mediaPlayer[8].stop();
 				mediaPlayer[0].play();
-				mediaPlayer[0].setCycleCount(Integer.MAX_VALUE);
-
-				if (refres == true) {
+				}
+					if (refres == true) {
 					refres = false;
 					c.clear();
 					c.drawImage(img[8], 0, 0);
@@ -462,6 +479,7 @@ public class Tetris extends ConsoleView {
 				c.sleep(32);
 
 			}
+			c.sleep(64);
 			for (byte i = 2; i<board.length; i++) {
 				for (byte i2 = 0; i2<board[1].length; i2++ ) {
 					if (board[i][i2] == 1) {
@@ -473,7 +491,7 @@ public class Tetris extends ConsoleView {
 				}
 			}
 			c.refresh();
-			mediaPlayer[0].stop();
+			mediaPlayer[8].stop();
 			mediaPlayer[3].play();
 			c.sleep(2000);
 			count = 0;
