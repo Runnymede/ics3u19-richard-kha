@@ -2,12 +2,17 @@
 package kha.culminating;
 
 
+import java.io.File;
+
 import hsafx.Console;
 import hsafx.ConsoleView;
 import javafx.scene.image.Image;
-
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
-
+import javafx.util.Duration;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 public class Tetris extends ConsoleView {
 
 	static byte [][] coordinates = new byte [2][4];
@@ -18,7 +23,7 @@ public class Tetris extends ConsoleView {
 	static byte type = 0;
 	static byte colour = 0;
 	static boolean finishGame = false;
-	static boolean[] fixedRandom = new boolean [35];
+	static boolean[] fixedRandom = new boolean [28];
 
 	@Override
 	public void run() {
@@ -26,7 +31,7 @@ public class Tetris extends ConsoleView {
 		c.autoRefreshOff();
 		Image[] img = new Image[10];
 		Image[] font = new Image[10];
-		
+		MediaPlayer [] mediaPlayer = new MediaPlayer [9];
 		img[0] = new Image("/kha/culminating/2.png");
 		img[1] = new Image("/kha/culminating/1.png");
 		img[2] = new Image("/kha/culminating/3.png");
@@ -48,11 +53,30 @@ public class Tetris extends ConsoleView {
 		font[8] = new Image("/kha/culminating/number8.png");
 		font[9] = new Image("/kha/culminating/number9.png");
 
-
+		mediaPlayer[0] = new MediaPlayer(new Media(new File("src/kha/culminating/Background.mp3").toURI().toString()));
+		mediaPlayer[1] = new MediaPlayer(new Media(new File("src/kha/culminating/Recording.mp3").toURI().toString()));
+		mediaPlayer[2] = new MediaPlayer(new Media(new File("src/kha/culminating/fast1.mp3").toURI().toString()));
+		mediaPlayer[3] = new MediaPlayer(new Media(new File("src/kha/culminating/Over.mp3").toURI().toString()));
+		mediaPlayer[4] = new MediaPlayer(new Media(new File("src/kha/culminating/Switch.mp3").toURI().toString()));
+		mediaPlayer[5] = new MediaPlayer(new Media(new File("src/kha/culminating/Down.mp3").toURI().toString()));
+		mediaPlayer[6] = new MediaPlayer(new Media(new File("src/kha/culminating/Ending.mp3").toURI().toString()));
+		mediaPlayer[7] = new MediaPlayer(new Media(new File("src/kha/culminating/Introduction.mp3").toURI().toString()));
+		mediaPlayer[0].setVolume(0.3);
+		mediaPlayer[1].setVolume(0.5);
+		mediaPlayer[2].setVolume(0.3);
+		mediaPlayer[3].setVolume(0.5);
+		mediaPlayer[4].setVolume(0.5);
+		mediaPlayer[5].setVolume(0.3);
+		mediaPlayer[6].setVolume(0.3);
+		mediaPlayer[7].setVolume(0.3);
+		
 		int highScore = 0;
 		int count = 0;
-
+		
+		mediaPlayer[7].setCycleCount(Integer.MAX_VALUE);
+		mediaPlayer[7].setAutoPlay(true);
 		while (!c.isKeyDown("Space")) {
+			
 			if (count%20 <10 ) {
 				c.clear();
 				c.drawImage(img[7], 0, 0);
@@ -68,18 +92,23 @@ public class Tetris extends ConsoleView {
 			c.sleep(50);
 
 		}
-		for (byte i = 29; i>=0; i--) {	
-			c.setFill(Color.GREEN);
-			c.fillRect(0, i*20+10, 500, 10);
-			c.sleep(20);	
-			c.refresh();		
-			c.setFill(Color.WHITE);
-			c.fillRect(0, i*20, 500, 10);
-			c.sleep(20);
-			c.refresh();
-		}
-		c.sleep(500);
+		
+		mediaPlayer[7].stop();
 		while (true) {
+//		mediaPlayer[8].stop();
+//		mediaPlayer[8].play();
+			mediaPlayer[6].stop();
+			for (byte i = 29; i>=0; i--) {	
+				c.setFill(Color.GREEN);
+				c.fillRect(0, i*20+10, 500, 10);
+				c.sleep(20);	
+				c.refresh();		
+				c.setFill(Color.WHITE);
+				c.fillRect(0, i*20, 500, 10);
+				c.sleep(20);
+				c.refresh();
+			}
+			c.sleep(500);
 			board = new byte[24][10];
 			byte currentType = 0;
 			byte speed = 0;
@@ -106,10 +135,11 @@ public class Tetris extends ConsoleView {
 			currentType = usingTetromino();
 			randomTetromino();
 			finishGame = false;
-	
 			
+
 			while (finishGame == false) {
-				
+				mediaPlayer[0].play();
+				mediaPlayer[0].setCycleCount(Integer.MAX_VALUE);
 
 				if (refres == true) {
 					refres = false;
@@ -142,9 +172,9 @@ public class Tetris extends ConsoleView {
 					}
 
 					//c.setFill(Color.BLACK);
-			
+
 					//c.setFont(STYLESHEET_MODENA,18);
-					
+
 
 					for (int i = String.valueOf(totalLinesCleared).length()-1; i>=0; i--) {
 						c.drawImage(font[Character.getNumericValue(String.valueOf(totalLinesCleared).charAt(i))], 290-(String.valueOf(totalLinesCleared).length()-1-i)*11+(String.valueOf(totalLinesCleared).length())*11, 70);
@@ -162,7 +192,7 @@ public class Tetris extends ConsoleView {
 
 				}
 				else if (c.isKeyDown("Right")&& delay[2]>2  ) {
-					
+
 					boolean move = true;
 					refres = true;
 
@@ -184,7 +214,7 @@ public class Tetris extends ConsoleView {
 					}
 				}
 				else if (c.isKeyDown("Left")&& delay[2]>2  ) {
-			
+
 
 					refres = true;
 					boolean move = true;
@@ -209,6 +239,8 @@ public class Tetris extends ConsoleView {
 
 				if (c.isKeyDown("Z")) {
 					if (swap == false) {
+						mediaPlayer[4].stop();
+						mediaPlayer[4].play();
 						for (byte i = 0; i<4; i++){
 							board[coordinates[0][i]][coordinates[1][i]] = 0;
 						}
@@ -225,6 +257,8 @@ public class Tetris extends ConsoleView {
 						swappedAlready = true;
 					}
 					else if (swappedAlready == false) {
+						mediaPlayer[4].stop();
+						mediaPlayer[4].play();
 						for (byte i = 0; i<4; i++){
 							board[coordinates[0][i]][coordinates[1][i]] = 0;
 						}
@@ -259,38 +293,51 @@ public class Tetris extends ConsoleView {
 					}
 				}
 				if (c.isKeyDown("Down")) {
-					constantSpeedChange = 2;
+					constantSpeedChange = 1;
+					if (speed%4 == 0) {
+					score+=speedMultiplier*1;
+					}
 				}
 				else {
 					constantSpeedChange = normal;
 				}
 
 
-
-				if (c.isKeyDown("X")  && currentType!=6 && delay[1]>6) {
+				if (c.isKeyDown("X")  && currentType!=6 && delay[1]>4) {
 					delay[1] = 0;
 
 					refres= true;
 
-					rotation(-1);
-		
-					
+					if (rotation(-1)) {
+						mediaPlayer[2].setCycleCount(Integer.MAX_VALUE);
+						mediaPlayer[2].play();
+
+					}
 
 				}
-				if (c.isKeyDown("C")  && currentType!=6 && delay[1]>6) {
+				else if (delay[1]==3){
+					mediaPlayer[2].stop();
+				}
+				if (c.isKeyDown("C")  && currentType!=6 && delay[1]>4) {
 					delay[1] = 0;
 
 					refres= true;
-					rotation(1);
-				
-					
+					if (rotation(1)) {
+						mediaPlayer[2].setCycleCount(Integer.MAX_VALUE);
+						mediaPlayer[2].play();
 
+					}
+
+				}
+				else  if (delay[1]==3){
+					mediaPlayer[2].stop();
 				}
 
 
-
+				boolean down = false;
 				if (c.isKeyDown("Space") && delay[0]>6  ) {
-				
+					mediaPlayer[5].stop();
+					mediaPlayer[5].play();
 					delay[0] = 0;
 					refres = true;
 
@@ -305,11 +352,11 @@ public class Tetris extends ConsoleView {
 							coordinates3[0][i]++;
 						}
 					}
-
+					score += counter*speedMultiplier;
 					movement(0,counter);
-					speed = constantSpeedChange;
+					down = true;
 				}
-				if (speed%constantSpeedChange == 0) {
+				if (speed%constantSpeedChange == 0 || down == true) {
 
 					if (place(coordinates) == true) {
 						swappedAlready = false;
@@ -349,7 +396,7 @@ public class Tetris extends ConsoleView {
 
 							}
 							if (runthis == true) {	
-										
+								mediaPlayer[1].play();				
 								for (byte i4 = 2; i4<board.length; i4++) {
 									for (byte i5 = 0; i5<board[1].length; i5++ ) {
 										c.drawImage(img[blockForDraw(i4,i5)-1], i5*20+xShift, i4*20+yShift);
@@ -375,7 +422,7 @@ public class Tetris extends ConsoleView {
 								}
 							}
 						}
-				
+
 						totalLinesCleared += linesClearedCounter;
 						score += (100)*Math.pow(linesClearedCounter,2)*speedMultiplier;
 						int number = totalLinesCleared/10;
@@ -385,8 +432,8 @@ public class Tetris extends ConsoleView {
 
 						currentType = usingTetromino();
 						randomTetromino();
-						
-						
+						mediaPlayer[1].stop();
+
 					}
 					else {
 						movement(0,1);
@@ -406,19 +453,25 @@ public class Tetris extends ConsoleView {
 						delay[i]++;
 					}
 				}
-			
-				
+
+
 				c.sleep(32);
-				
+
 			}
-			for (byte i = 2; i<4; i++) {
-				for (byte i2 = 3; i2<7; i2++ ) {
-					if (board[i][i2]==1) {
-					c.drawImage(img[6], i2*20+xShift, i*20+yShift);
+			for (byte i = 2; i<board.length; i++) {
+				for (byte i2 = 0; i2<board[1].length; i2++ ) {
+					if (board[i][i2] == 1) {
+						c.drawImage(img[6], i2*20+xShift, i*20+yShift);
+					}
+					else {
+						c.drawImage(img[blockForDraw(i,i2)-1], i2*20+xShift, i*20+yShift);
 					}
 				}
 			}
 			c.refresh();
+			mediaPlayer[0].stop();
+			mediaPlayer[3].play();
+			c.sleep(2000);
 			count = 0;
 			for (byte i = 0; i<30; i++) {				
 				c.setFill(Color.BLUE);
@@ -431,10 +484,12 @@ public class Tetris extends ConsoleView {
 				c.refresh();
 			}
 			c.sleep(1000);
-
+			mediaPlayer[3].stop();
 			if (score>highScore) {
 				highScore = score;
 			}
+			mediaPlayer[6].setCycleCount(Integer.MAX_VALUE);
+			mediaPlayer[6].play();
 			while (true) {
 				if (count%10 <5 ) {
 					c.clear();
@@ -474,7 +529,7 @@ public class Tetris extends ConsoleView {
 
 		launch(args);
 	}
-	public static void rotation (int num) {
+	public static boolean rotation (int num) {
 		boolean change = true;
 		byte [][] coordinates2 = new byte [2][4];
 		for (byte i = 1; i<4; i++) {
@@ -520,7 +575,8 @@ public class Tetris extends ConsoleView {
 				board[coordinates[0][i]][coordinates[1][i]] = 1;
 			}
 		}
-		
+		return change;
+
 	}
 	public static void randomTetromino() {
 		nextPieceBoard = new byte [2][4];
@@ -531,7 +587,7 @@ public class Tetris extends ConsoleView {
 				counter++;
 			}
 		}
-		if (counter>20) {
+		if (counter>15) {
 			for (byte i = 0; i<fixedRandom.length; i++) {
 				fixedRandom[i] = false;
 			}
