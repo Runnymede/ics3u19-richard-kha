@@ -20,7 +20,6 @@ public class Tetris extends ConsoleView {
 	 * 
 	 */
 
-
 	//Declaring static variables and objects for use in all methods and in main program
 	static byte [][] coordinates = new byte [2][4];
 	static byte [][] board;
