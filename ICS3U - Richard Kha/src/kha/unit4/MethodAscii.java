@@ -1,5 +1,12 @@
 package kha.unit4;
-
+/**
+ * <br>MethodAscii.java
+ * <br>This program displays an ASCII signature and some ASCII art.
+ * <br>This program uses methods as well.
+ * <br>January 3, 2020
+ * @author Richard Kha
+ *
+ */
 public class MethodAscii {
 
 	public static void main(String[] args) {
