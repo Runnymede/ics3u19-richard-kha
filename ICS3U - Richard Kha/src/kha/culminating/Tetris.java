@@ -240,7 +240,10 @@ public class Tetris extends ConsoleView {
 					c.clear();
 					c.drawImage(img[8], 0, 0);
 
-					//Draws the main board (center of screen)
+					/*
+					Draws the main board (center of screen).
+					The first two rows of the board are not seen on purpose.
+					*/
 					for (byte i = 2; i<board.length; i++) {
 						for (byte i2 = 0; i2<board[1].length; i2++ ) {
 							c.drawImage(img[blockForDraw(i,i2)-1], i2*20+xShift, i*20+yShift);
@@ -321,7 +324,7 @@ public class Tetris extends ConsoleView {
 							break;
 						}
 					}
-					
+
 					//Performs movement, resets the delay, and sets refresh to true, when the condition is met
 					if (move == true) {
 						movement(1,1);
@@ -343,17 +346,17 @@ public class Tetris extends ConsoleView {
 					will be out of bounds or will overlap a block not connected to the tetromino
 					if shifted 1 unit to the left
 					 */
-						for (byte i = 0; i<4; i++) {
-							if (coordinates[1][i]-1 == -1) {
-								move = false;
-								break;
-							}
-							if (board[coordinates[0][i]][coordinates[1][i]-1] >1) {
-								move = false;
-								break;
-							}
+					for (byte i = 0; i<4; i++) {
+						if (coordinates[1][i]-1 == -1) {
+							move = false;
+							break;
 						}
-						//performs movement, resets the delay, and sets refresh to true, when the condition is met
+						if (board[coordinates[0][i]][coordinates[1][i]-1] >1) {
+							move = false;
+							break;
+						}
+					}
+					//performs movement, resets the delay, and sets refresh to true, when the condition is met
 					if (move == true ) {
 						delay[2] = 0;
 						refresh = true;
@@ -367,74 +370,74 @@ public class Tetris extends ConsoleView {
 				 * swapped piece before being able to swap again)
 				 */
 				if (c.isKeyDown("Z")) {
-					
+
 					//This if statement is invoked when there is no piece being held
 					if (holding == false) {
-						
+
 						//Holding being false is a one time occurrence each play through
 						holding = true;
-						
+
 						//Playing audio
 						mediaPlayer[4].stop();
 						mediaPlayer[4].play();
-						
+
 						//Removing current piece from board
 						for (byte i = 0; i<4; i++){
 							board[coordinates[0][i]][coordinates[1][i]] = 0;
 						}
-						
+
 						//TempType holds the number correlated to the tetromino
 						tempType = currentType;
-						
+
 						//Putting the current tetromino into the hold array
 						for (byte i = 0; i<4; i++){
 							holdPieceCoordinates[0][i] = (byte) (tetrominos[currentType][0][i]+2);;
 							holdPieceCoordinates[1][i] = tetrominos[currentType][1][i];
 						}
-						
+
 						//Storing the current tetromino's colour into the hold variable
 						holdColour = colour;
-						
+
 						//Putting the next tetromino into the current tetromino and assigning the tetromino's type to "currentType"
 						currentType = usingTetromino();
-						
+
 						//Generating a random tetromino
 						randomTetromino();
-						
+
 						//Screen will refresh next loop
 						refresh = true;
-						
+
 						//Preventing the user from being able to swap 2 times in a row
 						swappedAlready = true;
 					}
 					else if (swappedAlready == false) {
-						
+
 						//playing audio
 						mediaPlayer[4].stop();
 						mediaPlayer[4].play();
-						
+
 						//Removing current piece from board
 						for (byte i = 0; i<4; i++){
 							board[coordinates[0][i]][coordinates[1][i]] = 0;
 						}
-						
+
 						//emptying array "holdPieceBoard"
 						for (byte i = 0; i<holdPieceBoard.length; i++) {
 							for (byte i2 = 0; i2<holdPieceBoard[0].length; i2++) {
 								holdPieceBoard[i][i2] = 0;
 							}
 						}
-						
+
 						//putting the coordinates of the held piece into "tempArray"
 						for (byte i = 0; i<4; i++){
 							tempArray[0][i] = holdPieceCoordinates[0][i];
 							tempArray[1][i] = holdPieceCoordinates[1][i];
 						}
-						
+
 						/*
 						Putting the current type of tetromino into the hold array and putting the
 						coordinates of the held object into the coordinates of the current object
-						*/
+						 */
 						for (byte i = 0; i<4; i++){
 							holdPieceCoordinates[0][i] = (byte) (tetrominos[currentType][0][i]+2);;
 							holdPieceCoordinates[1][i] = tetrominos[currentType][1][i];
@@ -448,39 +451,39 @@ public class Tetris extends ConsoleView {
 						colour = tempColour;
 						currentType = tempType;
 						tempType = temptype2;
-						
+
 						/*
 						By invoking movement without putting units for the block to move,
 						you can put the coordinates of the current object into the board
-						*/
+						 */
 						movement(0,0);
-						
+
 						//Screen will refresh next loop
 						refresh = true;
-						
+
 						//Preventing the user from being able to swap 2 times in a row
 						swappedAlready = true;
 					}
-					
+
 					//Placing the holdPieceCoordinates into the holdPieceBoard
 					for (byte i = 0; i<4; i++) {
 						holdPieceBoard[holdPieceCoordinates [0][i]-2][holdPieceCoordinates [1][i]-3] = 1;
 					}
 				}
-				
+
 				//Makes the piece move faster down when down key is pressed
 				if (c.isKeyDown("Down")) {
 					constantSpeedChange = 1;
-					
+
 					//Rewarding user for using this key
 					if (time2%4 == 0) {
 						score+=speedMultiplier*1;
 					}
-					
+
 					/*
 					Creating a delay when key is used to place pieces to prevent accidental movement 
 					(when placing a block, a new block is created at the top instantly, and reacting to this instant change of position is very difficult)
-					*/
+					 */
 					if (place(coordinates) == true) {
 						c.sleep(200);
 					}
@@ -493,13 +496,14 @@ public class Tetris extends ConsoleView {
 				/*
 				Rotating block counterclockwise, delay makes the user have greater control of the tetromino they control 
 				(the tetromino they control rotates slower with the delay)
-				*/
+				Also, currentType 6 indicates a square tetromino, and square tetrominos do not spin.
+				 */
 				if (c.isKeyDown("X")  && currentType!=6 && delay[1]>4) {
-					
+
 					/*
 					If a rotation is sucessful, reset the delay, play the audio, 
 					and assign true to refresh so screen will refresh next loop
-					*/
+					 */
 					if (rotation(-1)) {
 						delay[1] = 0;
 						mediaPlayer[2].play();
@@ -514,13 +518,14 @@ public class Tetris extends ConsoleView {
 				/*
 				Rotating block clockwise, delay makes the user have greater control of the tetromino they control 
 				(the tetromino they control rotates slower with the delay)
-				*/
+				Also, currentType 6 indicates a square tetromino, and square tetrominos do not spin.
+				 */
 				if (c.isKeyDown("C")  && currentType!=6 && delay[1]>4) {
-					
+
 					/*
 					If a rotation is successful, reset the delay, play the audio, 
 					and assign true to refresh so screen will refresh next loop
-					*/
+					 */
 					if (rotation(1)) {
 						delay[1] = 0;
 						refresh= true;
@@ -534,31 +539,31 @@ public class Tetris extends ConsoleView {
 					mediaPlayer[2].stop();
 				}
 
-				
+
 				boolean down = false;
-				
-				
+
+
 				//Places the block to the furthermost position at the bottom, delay makes sure that the user doesn't accidentally place multiple tetrominos 
 				if (c.isKeyDown("Space") && delay[0]>6  ) {
-					
+
 					//Play audio
 					mediaPlayer[5].stop();
 					mediaPlayer[5].play();
-					
+
 					//Reset delay
 					delay[0] = 0;
-					
+
 					//Set refresh to true so screen will refresh next loop
 					refresh = true;
 
 					byte counter = 0;
-					
+
 					//Putting current coordinates of tetromino into temporary array
 					for (byte i = 0; i<4; i++) {
 						coordinates3[0][i] = coordinates [0][i];
 						coordinates3[1][i] = coordinates [1][i];
 					}
-					
+
 					//Counting how far the piece can be placed downward without overlapping already filled board positions
 					while (place(coordinates3) == false) {
 						counter++;
@@ -566,33 +571,33 @@ public class Tetris extends ConsoleView {
 							coordinates3[0][i]++;
 						}
 					}
-					
+
 					//Rewarding user for using this game mechanic
 					score += counter*speedMultiplier;
-					
+
 					//Moving tetromino with counter to furthermost position at bottom
 					movement(0,counter);
-					
+
 					//Making sure the piece is instantly locked 
 					down = true;
 				}
-				
+
 				/*
 				This if checks for line clears every few loops (this exact amount is indicated by ConstantSpeedChange).
 				This allows for the user to move the piece when it touches the bottom for a few milliseconds, rather than locking the piece from user control instantly.
 				The variable down is affected only by the user entering a key press of the space bar, and this allows for the piece to lock instantly when the space bar is pressed.
-				*/
+				 */
 				if (time2%constantSpeedChange == 0 || down == true) {
-					
+
 					//If the tetromino can no longer move down, this if statement is entered 
 					if (place(coordinates) == true) {
-						
+
 						//A different sound is played when the piece is placed by soft dropping, or naturally
 						if (down != true) {
 							mediaPlayer[9].stop();
 							mediaPlayer[9].play();
 						}
-						
+
 						//Placing the tetromino, with it's respective colour
 						for (byte i = 0; i<4; i++) {
 							board[coordinates[0][i]][coordinates[1][i]] = colour;
@@ -616,14 +621,14 @@ public class Tetris extends ConsoleView {
 							}
 
 						}
-						
+
 						boolean clear = false;
-						
+
 						//This loop finds the rows which need to be cleared, and displays an animation across those rows
 						for (byte i2 = 0; i2<board[1].length; i2++) {
 							clear = false;
 							for (byte i3 = 0; i3<board.length; i3++) {
-								
+
 								//Placing -1 into the rest of the row which needs to be cleared
 								if (board[i3][0] == -1 ){
 									board[i3][i2] = -1;
@@ -633,7 +638,7 @@ public class Tetris extends ConsoleView {
 							}
 							//Refreshing the board every 40 milliseconds to create an animated effect
 							if (clear == true) {
-								
+
 								//Playing sound
 								mediaPlayer[1].play();				
 								for (byte i4 = 2; i4<board.length; i4++) {
@@ -647,7 +652,7 @@ public class Tetris extends ConsoleView {
 							}
 
 						}
-						
+
 						//Clearing the lines which are filled and pushing the lines above downward
 						int push = 0;
 						linesClearedCounter = 0;
@@ -663,7 +668,7 @@ public class Tetris extends ConsoleView {
 								}
 							}
 						}
-						
+
 						//Formulas to calculate scores and speed after line clear
 						totalLinesCleared += linesClearedCounter;
 						score += (100)*Math.pow(linesClearedCounter,2)*speedMultiplier;
@@ -671,26 +676,26 @@ public class Tetris extends ConsoleView {
 						constantSpeedChange= (byte) Math.round(32/Math.pow(1.5,number));
 						normal = constantSpeedChange;
 						speedMultiplier = 1.0 * Math.pow(1.8,number);
-						
+
 						//Changing the tetromino and generating a new tetromino
 						currentType = usingTetromino();
 						randomTetromino();
-						
+
 						//Stopping audio 
 						mediaPlayer[1].stop();
-						
+
 						//Tetrominos can now be swapped again
 						swappedAlready = false;
 					}
 					else {
-						
+
 						//move tetromino down by 1 unit
 						movement(0,1);
 					}
 					refresh = true;
 
 				}
-				
+
 				//the first block will move when program is ran since 0 modulus any number will yield 0, so move first block back up by 1 unit
 				if (firstBlock == true) {
 					movement(0,-1);
@@ -711,10 +716,10 @@ public class Tetris extends ConsoleView {
 				c.sleep(32);
 
 			}
-			
+
 			c.sleep(64);
-			
-			
+
+
 			//Display board and piece which lead to loss
 			for (byte i = 2; i<board.length; i++) {
 				for (byte i2 = 0; i2<board[1].length; i2++ ) {
@@ -727,16 +732,16 @@ public class Tetris extends ConsoleView {
 				}
 			}
 			c.refresh();
-			
+
 			//Play sound and stop music 
 			mediaPlayer[8].stop();
 			mediaPlayer[3].play();
-			
+
 			//Delay
 			c.sleep(2000);
 
 			time = 0;
-			
+
 			//Animation
 			for (byte i = 0; i<30; i++) {				
 				c.setFill(Color.BLUE);
@@ -748,13 +753,13 @@ public class Tetris extends ConsoleView {
 				c.sleep(20);
 				c.refresh();
 			}
-			
+
 			//Delay
 			c.sleep(1000);
-			
+
 			//Stop sound
 			mediaPlayer[3].stop();
-			
+
 			//Change highScore is score is greater
 			if (score>highScore) {
 				highScore = score;
@@ -762,21 +767,21 @@ public class Tetris extends ConsoleView {
 
 			//Play ending music
 			mediaPlayer[6].play();
-			
+
 			//Play ending screen with flashing text
 			while (true) {
-				
+
 				//Time is now a counter which goes from 1 - 10, then resets
 				if (time>10) {
 					time-=10;
 				}
-				
+
 				if (time <5 ) {
 					c.clear();
 					c.drawImage(img[9], 0, 0);
 					c.setFill(Color.WHITE);
 					c.setFont(STYLESHEET_CASPIAN,30);
-					
+
 					/*
 					 * Draws the total lines the user has cleared on top of the main board with the courier font.
 					 * Font is generated through image array "font" and uses a formula to draw additional digits to the left of the original digit's position
@@ -800,15 +805,15 @@ public class Tetris extends ConsoleView {
 					c.fillText("Press the space bar to play again", 42, 500);
 					c.fillText("Press the escape key to exit", 42, 550);
 				}
-				
+
 				time++;
-				
+
 				//Press space bar to play again
 				if (c.isKeyDown("Space")) {
 
 					break;
 				}
-				
+
 				//Press escape key to end program
 				else if (c.isKeyDown("Esc")) {
 					System.exit(0);
@@ -826,7 +831,7 @@ public class Tetris extends ConsoleView {
 	public static void main(String[] args) {
 		launch(args);
 	}
-	
+
 	/**
 	 * This method rotate the tetromino that the user is in control of
 	 * @param num - direction to rotate, positive equals clockwise, negative counterclockwise
@@ -835,7 +840,7 @@ public class Tetris extends ConsoleView {
 	public static boolean rotation (int num) {
 		boolean change = true;
 		byte [][] coordinates2 = new byte [2][4];
-		
+
 		//Rotates each piece around a center piece
 		for (byte i = 1; i<4; i++) {
 			byte tempX = 0;
@@ -856,11 +861,11 @@ public class Tetris extends ConsoleView {
 			}
 			tempY += coordinates[0][0];
 			tempX += coordinates[1][0];
-			
+
 			//Array "coordinates2" contains the tetromino's possible new location
 			coordinates2[1][i] = tempX;
 			coordinates2[0][i] = tempY;	
-			
+
 			//if any block in the tetromino is out of bounds or overlaps another block in the array, do not change the location of the tetromino
 			if (tempY>=board.length || tempY<0 || tempX>=board[0].length || tempX<0) {
 				change = false;
@@ -874,7 +879,7 @@ public class Tetris extends ConsoleView {
 		if (change == true) {
 			//clearing old location from board
 			for (byte i = 0; i<4; i++) {
-				
+
 				board[coordinates[0][i]][coordinates[1][i]] = 0;
 
 			}
@@ -898,10 +903,15 @@ public class Tetris extends ConsoleView {
 	 * Randomness of tetromino is weighed, if you get a piece once, you have a less likely chance of getting it again
 	 */
 	public static void randomTetromino() {
-		
+
 		nextPieceBoard = new byte [2][4];
 
-		//formulas for making weighed randomness, however, randomness is not guaranteed
+		/*
+		Formulas for making weighed randomness, however, getting the piece you want is not guaranteed
+		Array of boolean values which reset and make getting the same piece over 
+		and over unlikely, but does not make getting and specific piece guaranteed after
+		a certain number of piece generations
+		*/
 		byte counter = 0;
 		for (byte i = 0; i<fixedRandom.length; i++) {
 			if (fixedRandom[i] == false){
@@ -922,14 +932,20 @@ public class Tetris extends ConsoleView {
 			type = (byte) (type-7);
 		}
 		colour = (byte)(Math.random()*4+2);
-		
-		//putting coordinates of tetromino into nextPieceCoordinates
+
+		/*
+		Putting coordinates of the next tetromino into nextPieceCoordinates.
+		The y coordinates of the piece is purposely shifted 2 units down to allow the user
+		to spin the tetromino as soon as it spawns.
+		(Having the tetromino right at the top (row 0) prevents the user from spinning as 
+		spinning may lead to the piece coordinates being out of bounds)
+		*/
 		for (byte i = 0; i<4; i++) {
 			nextPieceCoordinates [0][i] = (byte) (tetrominos[type][0][i]+2);
 			nextPieceCoordinates [1][i] = tetrominos[type][1][i];
 
 		}
-		//puting coordinates of nextPieceCoordinates into nextPieceBoard
+		//Puting coordinates of nextPieceCoordinates into nextPieceBoard
 		for (byte i = 0; i<4; i++) {
 			nextPieceBoard[nextPieceCoordinates [0][i]-2][nextPieceCoordinates [1][i]-3] = 1;
 		}
@@ -945,7 +961,7 @@ public class Tetris extends ConsoleView {
 			coordinates[1][i] = nextPieceCoordinates [1][i];
 		}	
 		boolean finish = false;
-		
+
 		//puts the coordinates into the board and checks if the game is lost
 		for (byte i = 0; i<4; i++) {
 			//when the blocks overlap the blocks on the board, the game is lost
@@ -988,7 +1004,7 @@ public class Tetris extends ConsoleView {
 	 */
 	public static boolean place(byte[][] array) {
 		boolean place = false;
-		
+
 		//checks if there are blocks under the tetromino or if the tetromino is at the bottom of the board
 		for (byte i = 0; i<4; i++) {
 			if (array[0][i]+1 == board.length) {
@@ -1009,7 +1025,7 @@ public class Tetris extends ConsoleView {
 	 */
 	public static byte blockForDraw(byte i, byte i2) {
 		byte block  = 0;
-		
+
 		//generates number based on number in board
 		if (board[i][i2] >1) {
 			block = board[i][i2];

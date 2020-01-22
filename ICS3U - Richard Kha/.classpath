@@ -3,5 +3,6 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="C:/Users/Owner/Downloads/hsafx Resources/hsafx.jar"/>
+	<classpathentry kind="lib" path="C:/Users/333599769/eclipse-workspace/hsafx.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
