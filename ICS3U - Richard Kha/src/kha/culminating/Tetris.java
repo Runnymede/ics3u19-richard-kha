@@ -1002,10 +1002,10 @@ public class Tetris extends ConsoleView {
 		return place;
 	}
 	/**
-	 * This method finds out what block to draw at certain coordinates in the board
+	 * This method finds out what kind of block to draw at certain coordinates in the board 
 	 * @param i - row coordinate 
 	 * @param i2 - column coordinate
-	 * @return what type block should be drawn
+	 * @return what kind of block should be drawn
 	 */
 	public static byte blockForDraw(byte i, byte i2) {
 		byte block  = 0;
